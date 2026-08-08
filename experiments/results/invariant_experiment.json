@@ -1,0 +1,274 @@
+{
+  "ConstPos_0709": {
+    "univariate": {
+      "r_pos_cv": 0.758,
+      "r_spd_pos": 0.772,
+      "I1_occ_min_dist": 0.903,
+      "I2_reach_own": 0.982,
+      "I2_reach_prev": 0.988,
+      "I3_min_ttc": 0.795,
+      "I3_n_collision": 0.625
+    },
+    "rf_full_single_vehicle": 1.0,
+    "rf_full_plus_relational": 1.0,
+    "rf_relational_only": 1.0,
+    "lift": 0.0,
+    "hard": false
+  },
+  "ConstPos_1416": {
+    "univariate": {
+      "r_pos_cv": 0.764,
+      "r_spd_pos": 0.778,
+      "I1_occ_min_dist": 0.912,
+      "I2_reach_own": 0.981,
+      "I2_reach_prev": 0.987,
+      "I3_min_ttc": 0.755,
+      "I3_n_collision": 0.575
+    },
+    "rf_full_single_vehicle": 1.0,
+    "rf_full_plus_relational": 1.0,
+    "rf_relational_only": 1.0,
+    "lift": 0.0,
+    "hard": false
+  },
+  "ConstSpeed_1416": {
+    "univariate": {
+      "r_pos_cv": 0.951,
+      "r_spd_pos": 0.96,
+      "I1_occ_min_dist": 0.502,
+      "I2_reach_own": 0.509,
+      "I2_reach_prev": 0.509,
+      "I3_min_ttc": 0.599,
+      "I3_n_collision": 0.617
+    },
+    "rf_full_single_vehicle": 1.0,
+    "rf_full_plus_relational": 1.0,
+    "rf_relational_only": 0.607,
+    "lift": 0.0,
+    "hard": false
+  },
+  "DataReplaySybil_0709": {
+    "univariate": {
+      "r_pos_cv": 0.763,
+      "r_spd_pos": 0.76,
+      "I1_occ_min_dist": 0.617,
+      "I2_reach_own": 0.911,
+      "I2_reach_prev": 0.612,
+      "I3_min_ttc": 0.616,
+      "I3_n_collision": 0.583
+    },
+    "rf_full_single_vehicle": 0.918,
+    "rf_full_plus_relational": 0.99,
+    "rf_relational_only": 0.927,
+    "lift": 0.072,
+    "hard": false
+  },
+  "DataReplaySybil_1416": {
+    "univariate": {
+      "r_pos_cv": 0.733,
+      "r_spd_pos": 0.73,
+      "I1_occ_min_dist": 0.604,
+      "I2_reach_own": 0.851,
+      "I2_reach_prev": 0.603,
+      "I3_min_ttc": 0.605,
+      "I3_n_collision": 0.586
+    },
+    "rf_full_single_vehicle": 0.83,
+    "rf_full_plus_relational": 0.978,
+    "rf_relational_only": 0.924,
+    "lift": 0.148,
+    "hard": true
+  },
+  "DataReplay_0709": {
+    "univariate": {
+      "r_pos_cv": 0.791,
+      "r_spd_pos": 0.797,
+      "I1_occ_min_dist": 0.7,
+      "I2_reach_own": 0.652,
+      "I2_reach_prev": 0.666,
+      "I3_min_ttc": 0.667,
+      "I3_n_collision": 0.616
+    },
+    "rf_full_single_vehicle": 0.839,
+    "rf_full_plus_relational": 0.985,
+    "rf_relational_only": 0.941,
+    "lift": 0.146,
+    "hard": false
+  },
+  "DataReplay_1416": {
+    "univariate": {
+      "r_pos_cv": 0.76,
+      "r_spd_pos": 0.765,
+      "I1_occ_min_dist": 0.669,
+      "I2_reach_own": 0.659,
+      "I2_reach_prev": 0.636,
+      "I3_min_ttc": 0.645,
+      "I3_n_collision": 0.619
+    },
+    "rf_full_single_vehicle": 0.766,
+    "rf_full_plus_relational": 0.97,
+    "rf_relational_only": 0.927,
+    "lift": 0.204,
+    "hard": true
+  },
+  "DelayedMessages_0709": {
+    "univariate": {
+      "r_pos_cv": 0.758,
+      "r_spd_pos": 0.759,
+      "I1_occ_min_dist": 0.74,
+      "I2_reach_own": 0.765,
+      "I2_reach_prev": 0.774,
+      "I3_min_ttc": 0.756,
+      "I3_n_collision": 0.77
+    },
+    "rf_full_single_vehicle": 0.89,
+    "rf_full_plus_relational": 0.898,
+    "rf_relational_only": 0.84,
+    "lift": 0.008,
+    "hard": false
+  },
+  "DelayedMessages_1416": {
+    "univariate": {
+      "r_pos_cv": 0.743,
+      "r_spd_pos": 0.746,
+      "I1_occ_min_dist": 0.668,
+      "I2_reach_own": 0.753,
+      "I2_reach_prev": 0.756,
+      "I3_min_ttc": 0.716,
+      "I3_n_collision": 0.74
+    },
+    "rf_full_single_vehicle": 0.872,
+    "rf_full_plus_relational": 0.902,
+    "rf_relational_only": 0.864,
+    "lift": 0.03,
+    "hard": false
+  },
+  "Disruptive_0709": {
+    "univariate": {
+      "r_pos_cv": 0.942,
+      "r_spd_pos": 0.945,
+      "I1_occ_min_dist": 0.522,
+      "I2_reach_own": 0.92,
+      "I2_reach_prev": 0.642,
+      "I3_min_ttc": 0.529,
+      "I3_n_collision": 0.525
+    },
+    "rf_full_single_vehicle": 0.995,
+    "rf_full_plus_relational": 0.997,
+    "rf_relational_only": 0.891,
+    "lift": 0.002,
+    "hard": false
+  },
+  "Disruptive_1416": {
+    "univariate": {
+      "r_pos_cv": 0.947,
+      "r_spd_pos": 0.951,
+      "I1_occ_min_dist": 0.537,
+      "I2_reach_own": 0.903,
+      "I2_reach_prev": 0.679,
+      "I3_min_ttc": 0.5,
+      "I3_n_collision": 0.519
+    },
+    "rf_full_single_vehicle": 0.993,
+    "rf_full_plus_relational": 0.996,
+    "rf_relational_only": 0.903,
+    "lift": 0.003,
+    "hard": true
+  },
+  "DoS_0709": {
+    "univariate": {
+      "r_pos_cv": 0.769,
+      "r_spd_pos": 0.83,
+      "I1_occ_min_dist": 0.911,
+      "I2_reach_own": 0.732,
+      "I2_reach_prev": 0.754,
+      "I3_min_ttc": 0.855,
+      "I3_n_collision": 0.71
+    },
+    "rf_full_single_vehicle": 0.999,
+    "rf_full_plus_relational": 1.0,
+    "rf_relational_only": 0.991,
+    "lift": 0.001,
+    "hard": false
+  },
+  "DoS_1416": {
+    "univariate": {
+      "r_pos_cv": 0.769,
+      "r_spd_pos": 0.831,
+      "I1_occ_min_dist": 0.895,
+      "I2_reach_own": 0.724,
+      "I2_reach_prev": 0.753,
+      "I3_min_ttc": 0.837,
+      "I3_n_collision": 0.742
+    },
+    "rf_full_single_vehicle": 0.999,
+    "rf_full_plus_relational": 1.0,
+    "rf_relational_only": 0.991,
+    "lift": 0.001,
+    "hard": false
+  },
+  "EventualStop_1416": {
+    "univariate": {
+      "r_pos_cv": 0.865,
+      "r_spd_pos": 0.873,
+      "I1_occ_min_dist": 0.593,
+      "I2_reach_own": 0.889,
+      "I2_reach_prev": 0.895,
+      "I3_min_ttc": 0.605,
+      "I3_n_collision": 0.531
+    },
+    "rf_full_single_vehicle": 0.933,
+    "rf_full_plus_relational": 0.936,
+    "rf_relational_only": 0.9,
+    "lift": 0.003,
+    "hard": true
+  },
+  "RandomPos_0709": {
+    "univariate": {
+      "r_pos_cv": 0.951,
+      "r_spd_pos": 0.951,
+      "I1_occ_min_dist": 0.897,
+      "I2_reach_own": 0.963,
+      "I2_reach_prev": 0.99,
+      "I3_min_ttc": 0.788,
+      "I3_n_collision": 0.623
+    },
+    "rf_full_single_vehicle": 1.0,
+    "rf_full_plus_relational": 1.0,
+    "rf_relational_only": 0.994,
+    "lift": 0.0,
+    "hard": false
+  },
+  "RandomPos_1416": {
+    "univariate": {
+      "r_pos_cv": 0.961,
+      "r_spd_pos": 0.961,
+      "I1_occ_min_dist": 0.912,
+      "I2_reach_own": 0.963,
+      "I2_reach_prev": 0.992,
+      "I3_min_ttc": 0.751,
+      "I3_n_collision": 0.574
+    },
+    "rf_full_single_vehicle": 1.0,
+    "rf_full_plus_relational": 1.0,
+    "rf_relational_only": 0.994,
+    "lift": 0.0,
+    "hard": false
+  },
+  "RandomSpeed_1416": {
+    "univariate": {
+      "r_pos_cv": 0.951,
+      "r_spd_pos": 0.96,
+      "I1_occ_min_dist": 0.503,
+      "I2_reach_own": 0.51,
+      "I2_reach_prev": 0.509,
+      "I3_min_ttc": 0.598,
+      "I3_n_collision": 0.609
+    },
+    "rf_full_single_vehicle": 1.0,
+    "rf_full_plus_relational": 1.0,
+    "rf_relational_only": 0.631,
+    "lift": 0.0,
+    "hard": false
+  }
+}

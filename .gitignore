@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+checkpoints/
+!checkpoints/
+checkpoints/*
+!checkpoints/crossfold_unified/
+checkpoints/crossfold_unified/*
+!checkpoints/crossfold_unified/results_summary.md
+!checkpoints/crossfold_unified/statistics.json
+*.pt
+*.joblib
+data/*.csv
+data/*.tar.xz
+# Derived Study 2 feature tables - rebuild via piad_v2x/tools/veremi_extract.py
+data/features/
+*.parquet
+# Trained Study 2 detector artifacts - rebuild via piad_v2x/tools/train_detector.py
+experiments/results/models/
+.DS_Store
+.ipynb_checkpoints/
+
+# --- publication hygiene (added 2026-07-22) ---
+*.log
+*.npz
+*STATUS*.txt
+.pytest_cache/
+.hyperresearch/

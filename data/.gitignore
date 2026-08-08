@@ -1,0 +1,6 @@
+# The VeReMi Extension dataset is not redistributed here.
+# See README.md in this directory for download links and expected paths.
+# Ignore all data files; keep only the instructions.
+*
+!.gitignore
+!README.md

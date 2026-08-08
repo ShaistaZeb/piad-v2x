@@ -1,0 +1,123 @@
+{
+  "scenario": "highway_2",
+  "operating_point": {
+    "TAU": "per-attack (see by_attack[*].tau)",
+    "K": 3,
+    "thr": 0.2367624596255277,
+    "target_fr": 0.005
+  },
+  "by_attack": {
+    "constantPositionOffset": {
+      "acc_malicious_rate": 0.3064,
+      "reduction_vs_nodefense": 0.6936,
+      "ci95": [
+        0.6557,
+        0.7286
+      ],
+      "reduction_vs_detection": 0.0,
+      "false_revocation": 0.0,
+      "frac_isolated": 0.0,
+      "km_median_s": null,
+      "flag_rate": 0.6936,
+      "n_attacker_senders": 95,
+      "tau": 0.45,
+      "cal_fr": 0.0
+    },
+    "randomPositionOffset": {
+      "acc_malicious_rate": 0.0025,
+      "reduction_vs_nodefense": 0.9975,
+      "ci95": [
+        0.996,
+        0.9989
+      ],
+      "reduction_vs_detection": 0.4,
+      "false_revocation": 0.0,
+      "frac_isolated": 0.9895,
+      "km_median_s": 6.0,
+      "flag_rate": 0.9959,
+      "n_attacker_senders": 95,
+      "tau": 0.45,
+      "cal_fr": 0.0
+    },
+    "zeroSpeedReport": {
+      "acc_malicious_rate": 0.0,
+      "reduction_vs_nodefense": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "reduction_vs_detection": null,
+      "false_revocation": 0.033,
+      "frac_isolated": 0.9789,
+      "km_median_s": 6.0,
+      "flag_rate": 1.0,
+      "n_attacker_senders": 95,
+      "tau": 0.45,
+      "cal_fr": 0.0025
+    },
+    "dataReplay": {
+      "acc_malicious_rate": 0.0884,
+      "reduction_vs_nodefense": 0.9116,
+      "ci95": [
+        0.8928,
+        0.9288
+      ],
+      "reduction_vs_detection": 0.0938,
+      "false_revocation": 0.0348,
+      "frac_isolated": 0.1026,
+      "km_median_s": null,
+      "flag_rate": 0.9024,
+      "n_attacker_senders": 95,
+      "tau": 0.2,
+      "cal_fr": 0.0045
+    },
+    "timeDelayAttack": {
+      "acc_malicious_rate": 0.2049,
+      "reduction_vs_nodefense": 0.7951,
+      "ci95": [
+        0.7605,
+        0.8261
+      ],
+      "reduction_vs_detection": 0.0,
+      "false_revocation": 0.0,
+      "frac_isolated": 0.0,
+      "km_median_s": null,
+      "flag_rate": 0.7951,
+      "n_attacker_senders": 95,
+      "tau": 0.4,
+      "cal_fr": 0.0
+    },
+    "dosAttack": {
+      "acc_malicious_rate": 0.0023,
+      "reduction_vs_nodefense": 0.9977,
+      "ci95": [
+        0.9955,
+        0.9993
+      ],
+      "reduction_vs_detection": 0.4419,
+      "false_revocation": 0.0,
+      "frac_isolated": 1.0,
+      "km_median_s": 2.0,
+      "flag_rate": 0.9959,
+      "n_attacker_senders": 95,
+      "tau": 0.45,
+      "cal_fr": 0.0026
+    },
+    "trafficCongestionSybil": {
+      "acc_malicious_rate": 0.0002,
+      "reduction_vs_nodefense": 0.9998,
+      "ci95": [
+        0.9996,
+        1.0
+      ],
+      "reduction_vs_detection": 0.0,
+      "false_revocation": 0.0,
+      "frac_isolated": 0.0,
+      "km_median_s": null,
+      "flag_rate": 0.9998,
+      "n_attacker_senders": 12031,
+      "tau": 0.35,
+      "cal_fr": 0.0021
+    }
+  }
+}

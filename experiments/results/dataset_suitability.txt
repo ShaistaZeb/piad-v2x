@@ -1,0 +1,39 @@
+
+===== DataReplaySybil (hard, Sybil) =====
+emitted messages: 161,167 | unique senders: 1,688 | time span: 50405-57600s
+1s snapshots: 7,185 | vehicles/snapshot mean=22.4 median=21 max=60
+neighbours within  50m: mean=1.8 median=1.0 p90=4.0
+neighbours within 100m: mean=2.8 median=2.0 p90=6.0
+neighbours within 200m: mean=4.8 median=4.0 p90=10.0
+fraction of vehicles with >=1 neighbour @100m: 0.848
+nearest-neighbour dist (m): mean=42.8 median=15.4 p90=123.1
+  nearest-nbr dist BENIGN:  median=20.0m
+  nearest-nbr dist ATTACKER:median=10.0m  (overlap<5m: benign=0.197 attacker=0.419)
+velocity vectors present & non-zero: 0.997  -> relative motion computable
+comm graph: distinct senders heard per receiver mean=18.4 median=17
+
+===== DataReplay (hard) =====
+emitted messages: 161,167 | unique senders: 1,688 | time span: 50405-57600s
+1s snapshots: 7,185 | vehicles/snapshot mean=22.4 median=21 max=60
+neighbours within  50m: mean=1.9 median=1.0 p90=4.0
+neighbours within 100m: mean=2.8 median=2.0 p90=6.0
+neighbours within 200m: mean=4.9 median=4.0 p90=10.0
+fraction of vehicles with >=1 neighbour @100m: 0.848
+nearest-neighbour dist (m): mean=41.0 median=13.7 p90=123.8
+  nearest-nbr dist BENIGN:  median=18.5m
+  nearest-nbr dist ATTACKER:median=4.4m  (overlap<5m: benign=0.218 attacker=0.504)
+velocity vectors present & non-zero: 0.998  -> relative motion computable
+comm graph: distinct senders heard per receiver mean=18.4 median=17
+
+===== ConstPos (easy) =====
+emitted messages: 161,167 | unique senders: 1,688 | time span: 50405-57600s
+1s snapshots: 7,185 | vehicles/snapshot mean=22.4 median=21 max=60
+neighbours within  50m: mean=0.8 median=0.0 p90=2.0
+neighbours within 100m: mean=1.4 median=1.0 p90=4.0
+neighbours within 200m: mean=2.9 median=2.0 p90=7.0
+fraction of vehicles with >=1 neighbour @100m: 0.574
+nearest-neighbour dist (m): mean=111.8 median=69.1 p90=268.4
+  nearest-nbr dist BENIGN:  median=37.9m
+  nearest-nbr dist ATTACKER:median=178.7m  (overlap<5m: benign=0.064 attacker=0.000)
+velocity vectors present & non-zero: 0.997  -> relative motion computable
+comm graph: distinct senders heard per receiver mean=18.4 median=17

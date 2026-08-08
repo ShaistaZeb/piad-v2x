@@ -1,0 +1,190 @@
+{
+  "protocol": "experiments/PRE_REGISTRATION_H1.md amendment 1",
+  "window": "_0709 (held-out; detector trained on _1416, all senders unseen)",
+  "mde_reduction": 0.2,
+  "fr_bound": 0.02,
+  "pre_registered_point": {
+    "tau": 0.15,
+    "K": 3,
+    "mean_persistent_reduction": 0.8044,
+    "mean_false_revocation": 0.0059,
+    "benign_revoked_total": 100,
+    "benign_senders_total": 17076,
+    "pooled_false_revocation": 0.0059
+  },
+  "committed_point_for_contrast": {
+    "tau": 0.35,
+    "K": 3,
+    "mean_persistent_reduction": 0.8214,
+    "mean_false_revocation": 0.0638,
+    "benign_revoked_total": 1089,
+    "benign_senders_total": 17076,
+    "pooled_false_revocation": 0.0638
+  },
+  "grid": [
+    {
+      "tau": 0.1,
+      "K": 3,
+      "mean_persistent_reduction": 0.8005,
+      "mean_false_revocation": 0.002,
+      "benign_revoked_total": 35,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.002
+    },
+    {
+      "tau": 0.15,
+      "K": 3,
+      "mean_persistent_reduction": 0.8044,
+      "mean_false_revocation": 0.0059,
+      "benign_revoked_total": 100,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0059
+    },
+    {
+      "tau": 0.2,
+      "K": 3,
+      "mean_persistent_reduction": 0.8072,
+      "mean_false_revocation": 0.0124,
+      "benign_revoked_total": 212,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0124
+    },
+    {
+      "tau": 0.25,
+      "K": 3,
+      "mean_persistent_reduction": 0.8177,
+      "mean_false_revocation": 0.0213,
+      "benign_revoked_total": 363,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0213
+    },
+    {
+      "tau": 0.3,
+      "K": 3,
+      "mean_persistent_reduction": 0.8195,
+      "mean_false_revocation": 0.0361,
+      "benign_revoked_total": 616,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0361
+    },
+    {
+      "tau": 0.35,
+      "K": 3,
+      "mean_persistent_reduction": 0.8214,
+      "mean_false_revocation": 0.0638,
+      "benign_revoked_total": 1089,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0638
+    },
+    {
+      "tau": 0.1,
+      "K": 5,
+      "mean_persistent_reduction": 0.7921,
+      "mean_false_revocation": 0.0016,
+      "benign_revoked_total": 27,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0016
+    },
+    {
+      "tau": 0.15,
+      "K": 5,
+      "mean_persistent_reduction": 0.8008,
+      "mean_false_revocation": 0.0047,
+      "benign_revoked_total": 80,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0047
+    },
+    {
+      "tau": 0.2,
+      "K": 5,
+      "mean_persistent_reduction": 0.8042,
+      "mean_false_revocation": 0.0104,
+      "benign_revoked_total": 177,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0104
+    },
+    {
+      "tau": 0.25,
+      "K": 5,
+      "mean_persistent_reduction": 0.8065,
+      "mean_false_revocation": 0.0173,
+      "benign_revoked_total": 295,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0173
+    },
+    {
+      "tau": 0.3,
+      "K": 5,
+      "mean_persistent_reduction": 0.8175,
+      "mean_false_revocation": 0.0264,
+      "benign_revoked_total": 450,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0264
+    },
+    {
+      "tau": 0.35,
+      "K": 5,
+      "mean_persistent_reduction": 0.8195,
+      "mean_false_revocation": 0.0474,
+      "benign_revoked_total": 809,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0474
+    },
+    {
+      "tau": 0.1,
+      "K": 8,
+      "mean_persistent_reduction": 0.7772,
+      "mean_false_revocation": 0.0014,
+      "benign_revoked_total": 24,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0014
+    },
+    {
+      "tau": 0.15,
+      "K": 8,
+      "mean_persistent_reduction": 0.7908,
+      "mean_false_revocation": 0.0039,
+      "benign_revoked_total": 66,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0039
+    },
+    {
+      "tau": 0.2,
+      "K": 8,
+      "mean_persistent_reduction": 0.7985,
+      "mean_false_revocation": 0.0076,
+      "benign_revoked_total": 129,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0076
+    },
+    {
+      "tau": 0.25,
+      "K": 8,
+      "mean_persistent_reduction": 0.8023,
+      "mean_false_revocation": 0.0122,
+      "benign_revoked_total": 209,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0122
+    },
+    {
+      "tau": 0.3,
+      "K": 8,
+      "mean_persistent_reduction": 0.8048,
+      "mean_false_revocation": 0.0184,
+      "benign_revoked_total": 315,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0184
+    },
+    {
+      "tau": 0.35,
+      "K": 8,
+      "mean_persistent_reduction": 0.8063,
+      "mean_false_revocation": 0.0297,
+      "benign_revoked_total": 508,
+      "benign_senders_total": 17076,
+      "pooled_false_revocation": 0.0297
+    }
+  ],
+  "confirmed": true,
+  "verdict": "CONFIRMED: tau=0.15/K=3 transfers to the held-out _0709 window (reduction>=0.20 and false-revocation<=0.02)"
+}

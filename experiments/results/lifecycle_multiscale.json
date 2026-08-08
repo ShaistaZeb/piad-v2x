@@ -1,0 +1,58 @@
+{
+  "protocol": "multi-scale detector (KINEMATIC + interaction invariants) trained on _1416, frozen; scored on held-out _0709; TAU=0.15, K=3; 95% cluster bootstrap over senders (n=1000)",
+  "detector_features": [
+    "px",
+    "py",
+    "sx",
+    "sy",
+    "ax",
+    "ay",
+    "hx",
+    "hy",
+    "spd_mag",
+    "acl_mag",
+    "dt",
+    "disp",
+    "implied_spd",
+    "has_prev",
+    "r_pos_cv",
+    "r_spd_pos",
+    "I1_occ_min_dist",
+    "I2_reach_prev",
+    "I3_min_ttc",
+    "I3_n_collision"
+  ],
+  "operating_point": {
+    "TAU": 0.15,
+    "K": 3
+  },
+  "detector_flag_rate_on_attackers_mean": 0.8946,
+  "accepted_malicious_reduction": {
+    "point": 0.956,
+    "ci95": [
+      0.9527,
+      0.9592
+    ],
+    "arm_C_accepted_malicious_total": 566497,
+    "arm_D_accepted_malicious_total": 24919,
+    "n_attacker_senders": 7326
+  },
+  "false_revocation": {
+    "point": 0.002,
+    "ci95": [
+      0.0013,
+      0.0027
+    ],
+    "benign_revoked": 34,
+    "benign_total": 17076
+  },
+  "time_to_isolate": {
+    "frac_isolated": 0.9959,
+    "km_median_s_point": 1.0,
+    "km_median_s_ci95": [
+      1.0,
+      1.0
+    ],
+    "n_attacker_pseudonyms": 7326
+  }
+}

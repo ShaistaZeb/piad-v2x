@@ -1,0 +1,72 @@
+{
+  "protocol": "PRE_REGISTRATION_H1.md amendment 1; second outcome metric",
+  "window": "_0709 (held-out; detector frozen on _1416, all senders unseen) [G1]",
+  "operating_point": {
+    "TAU_REV": 0.15,
+    "K": 3
+  },
+  "guards": {
+    "G1_no_train_on_test": "detector frozen on _1416; every _0709 sender unseen",
+    "G2_censoring": "never-isolated pseudonyms right-censored; median is Kaplan-Meier",
+    "G3_clock_and_population": "clock from first malicious message; attacker pseudonyms only; sub-N_MIN pseudonyms structurally censored",
+    "oracle_check_7": "PASS - 19 scored features, none oracle/label"
+  },
+  "pooled": {
+    "n_attacker_pseudonyms": 7326,
+    "n_isolated": 7280,
+    "frac_isolated": 0.9937,
+    "n_structurally_censored_short_lived": 5,
+    "km_median_time_to_isolate_s": 1.0
+  },
+  "per_scenario": {
+    "ConstPos_0709": {
+      "n_attacker_pseudonyms": 1221,
+      "n_isolated": 1215,
+      "frac_isolated": 0.9951,
+      "n_structurally_censored_short": 1,
+      "km_median_time_to_isolate_s": 1.0,
+      "median_of_isolated_only_s": 1.0
+    },
+    "RandomPos_0709": {
+      "n_attacker_pseudonyms": 1221,
+      "n_isolated": 1215,
+      "frac_isolated": 0.9951,
+      "n_structurally_censored_short": 1,
+      "km_median_time_to_isolate_s": 1.0,
+      "median_of_isolated_only_s": 1.0
+    },
+    "DataReplay_0709": {
+      "n_attacker_pseudonyms": 1221,
+      "n_isolated": 1200,
+      "frac_isolated": 0.9828,
+      "n_structurally_censored_short": 1,
+      "km_median_time_to_isolate_s": 3.0,
+      "median_of_isolated_only_s": 3.0
+    },
+    "Disruptive_0709": {
+      "n_attacker_pseudonyms": 1221,
+      "n_isolated": 1214,
+      "frac_isolated": 0.9943,
+      "n_structurally_censored_short": 1,
+      "km_median_time_to_isolate_s": 2.0,
+      "median_of_isolated_only_s": 2.0
+    },
+    "DelayedMessages_0709": {
+      "n_attacker_pseudonyms": 1221,
+      "n_isolated": 1218,
+      "frac_isolated": 0.9975,
+      "n_structurally_censored_short": 1,
+      "km_median_time_to_isolate_s": 1.0,
+      "median_of_isolated_only_s": 1.0
+    },
+    "DoS_0709": {
+      "n_attacker_pseudonyms": 1221,
+      "n_isolated": 1218,
+      "frac_isolated": 0.9975,
+      "n_structurally_censored_short": 0,
+      "km_median_time_to_isolate_s": 0.5,
+      "median_of_isolated_only_s": 0.5
+    }
+  },
+  "note": "Time-to-isolate pairs with accepted-malicious-message reduction (the operating-point run) as the two isolation-outcome metrics. Short-lived (sub-cold-start) attacker pseudonyms are never isolated by design - the honest Sybil/short-pseudonym boundary."
+}

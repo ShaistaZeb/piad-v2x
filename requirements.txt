@@ -1,0 +1,15 @@
+# PIAD-V2X dependencies - pinned to the toolchain that produced the committed
+# results (Python 3.13, project virtualenv). These are the exact installed
+# versions; they resolve on Linux/macOS with pip 24+. Relax to >= only if a
+# platform wheel is unavailable, and re-run tests/ before trusting any
+# regenerated number.
+numpy==2.5.0
+pandas==3.0.3
+scikit-learn==1.9.0
+scipy==1.18.0
+torch==2.12.1
+matplotlib==3.11.0
+joblib==1.5.3
+pyarrow==24.0.0
+statsmodels==0.14.6
+PyYAML==6.0.3

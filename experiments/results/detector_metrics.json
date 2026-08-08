@@ -1,0 +1,336 @@
+{
+  "arm_i_data_only": {
+    "arm": "arm_i_data_only",
+    "roc_auc": 0.9411,
+    "pr_auc": 0.9461,
+    "f1": 0.8248,
+    "precision": 0.7649,
+    "recall": 0.8948,
+    "fpr": 0.1717,
+    "brier": 0.0636,
+    "threshold": 0.1725,
+    "macro_f1_hard": 0.3118,
+    "per_class": {
+      "ConstPos_1416": {
+        "f1": 0.3799,
+        "recall": 0.9998,
+        "n_attack": 51378
+      },
+      "ConstSpeed_1416": {
+        "f1": 0.3798,
+        "recall": 0.9993,
+        "n_attack": 51378
+      },
+      "DataReplaySybil_1416": {
+        "f1": 0.3118,
+        "recall": 0.7874,
+        "n_attack": 51378
+      },
+      "DataReplay_1416": {
+        "f1": 0.2592,
+        "recall": 0.6349,
+        "n_attack": 51378
+      },
+      "DelayedMessages_1416": {
+        "f1": 0.2502,
+        "recall": 0.6096,
+        "n_attack": 51378
+      },
+      "Disruptive_1416": {
+        "f1": 0.3716,
+        "recall": 0.9729,
+        "n_attack": 51378
+      },
+      "DoS_1416": {
+        "f1": 0.6348,
+        "recall": 0.9949,
+        "n_attack": 147112
+      },
+      "EventualStop_1416": {
+        "f1": 0.3048,
+        "recall": 0.7667,
+        "n_attack": 51378
+      },
+      "RandomPos_1416": {
+        "f1": 0.3799,
+        "recall": 0.9996,
+        "n_attack": 51378
+      },
+      "RandomSpeed_1416": {
+        "f1": 0.3789,
+        "recall": 0.9965,
+        "n_attack": 51378
+      }
+    },
+    "n_params": 10241
+  },
+  "arm_ii_residual_feature": {
+    "arm": "arm_ii_residual_feature",
+    "roc_auc": 0.9429,
+    "pr_auc": 0.9471,
+    "f1": 0.8348,
+    "precision": 0.7834,
+    "recall": 0.8934,
+    "fpr": 0.1541,
+    "brier": 0.0638,
+    "threshold": 0.1899,
+    "macro_f1_hard": 0.3335,
+    "per_class": {
+      "ConstPos_1416": {
+        "f1": 0.4039,
+        "recall": 0.9945,
+        "n_attack": 51378
+      },
+      "ConstSpeed_1416": {
+        "f1": 0.4055,
+        "recall": 0.9995,
+        "n_attack": 51378
+      },
+      "DataReplaySybil_1416": {
+        "f1": 0.3315,
+        "recall": 0.781,
+        "n_attack": 51378
+      },
+      "DataReplay_1416": {
+        "f1": 0.2794,
+        "recall": 0.6381,
+        "n_attack": 51378
+      },
+      "DelayedMessages_1416": {
+        "f1": 0.2651,
+        "recall": 0.6005,
+        "n_attack": 51378
+      },
+      "Disruptive_1416": {
+        "f1": 0.3993,
+        "recall": 0.9804,
+        "n_attack": 51378
+      },
+      "DoS_1416": {
+        "f1": 0.6587,
+        "recall": 0.9937,
+        "n_attack": 147112
+      },
+      "EventualStop_1416": {
+        "f1": 0.3238,
+        "recall": 0.7592,
+        "n_attack": 51378
+      },
+      "RandomPos_1416": {
+        "f1": 0.4056,
+        "recall": 0.9998,
+        "n_attack": 51378
+      },
+      "RandomSpeed_1416": {
+        "f1": 0.4056,
+        "recall": 0.9998,
+        "n_attack": 51378
+      }
+    },
+    "n_params": 10881
+  },
+  "arm_iii_residual_in_loss": {
+    "arm": "arm_iii_residual_in_loss",
+    "roc_auc": 0.9428,
+    "pr_auc": 0.9472,
+    "f1": 0.8295,
+    "precision": 0.7728,
+    "recall": 0.895,
+    "fpr": 0.1642,
+    "brier": 0.0645,
+    "threshold": 0.2037,
+    "macro_f1_hard": 0.3234,
+    "per_class": {
+      "ConstPos_1416": {
+        "f1": 0.3885,
+        "recall": 0.9935,
+        "n_attack": 51378
+      },
+      "ConstSpeed_1416": {
+        "f1": 0.3903,
+        "recall": 0.9992,
+        "n_attack": 51378
+      },
+      "DataReplaySybil_1416": {
+        "f1": 0.3197,
+        "recall": 0.784,
+        "n_attack": 51378
+      },
+      "DataReplay_1416": {
+        "f1": 0.2662,
+        "recall": 0.6327,
+        "n_attack": 51378
+      },
+      "DelayedMessages_1416": {
+        "f1": 0.2514,
+        "recall": 0.5925,
+        "n_attack": 51378
+      },
+      "Disruptive_1416": {
+        "f1": 0.382,
+        "recall": 0.9731,
+        "n_attack": 51378
+      },
+      "DoS_1416": {
+        "f1": 0.6445,
+        "recall": 0.9938,
+        "n_attack": 147112
+      },
+      "EventualStop_1416": {
+        "f1": 0.3256,
+        "recall": 0.8016,
+        "n_attack": 51378
+      },
+      "RandomPos_1416": {
+        "f1": 0.3904,
+        "recall": 0.9995,
+        "n_attack": 51378
+      },
+      "RandomSpeed_1416": {
+        "f1": 0.3894,
+        "recall": 0.9965,
+        "n_attack": 51378
+      }
+    },
+    "n_params": 10501,
+    "lambda_star": 1.0
+  },
+  "rf_baseline": {
+    "arm": "rf_baseline",
+    "roc_auc": 0.9384,
+    "pr_auc": 0.9477,
+    "f1": 0.8443,
+    "precision": 0.7988,
+    "recall": 0.8952,
+    "fpr": 0.1407,
+    "brier": 0.0644,
+    "threshold": 0.2526,
+    "macro_f1_hard": 0.3579,
+    "per_class": {
+      "ConstPos_1416": {
+        "f1": 0.4278,
+        "recall": 0.9999,
+        "n_attack": 51378
+      },
+      "ConstSpeed_1416": {
+        "f1": 0.4276,
+        "recall": 0.9992,
+        "n_attack": 51378
+      },
+      "DataReplaySybil_1416": {
+        "f1": 0.347,
+        "recall": 0.7713,
+        "n_attack": 51378
+      },
+      "DataReplay_1416": {
+        "f1": 0.2907,
+        "recall": 0.6248,
+        "n_attack": 51378
+      },
+      "DelayedMessages_1416": {
+        "f1": 0.2654,
+        "recall": 0.5622,
+        "n_attack": 51378
+      },
+      "Disruptive_1416": {
+        "f1": 0.4201,
+        "recall": 0.9771,
+        "n_attack": 51378
+      },
+      "DoS_1416": {
+        "f1": 0.6782,
+        "recall": 0.9925,
+        "n_attack": 147112
+      },
+      "EventualStop_1416": {
+        "f1": 0.3737,
+        "recall": 0.8445,
+        "n_attack": 51378
+      },
+      "RandomPos_1416": {
+        "f1": 0.4278,
+        "recall": 0.9999,
+        "n_attack": 51378
+      },
+      "RandomSpeed_1416": {
+        "f1": 0.4278,
+        "recall": 0.9997,
+        "n_attack": 51378
+      }
+    },
+    "fit_seconds": 123.5
+  },
+  "rule_threshold": {
+    "arm": "rule_threshold",
+    "roc_auc": 0.7002,
+    "pr_auc": 0.7485,
+    "f1": 0.5552,
+    "precision": 0.3842,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "brier": null,
+    "threshold": 0.0,
+    "macro_f1_hard": 0.0952,
+    "per_class": {
+      "ConstPos_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      },
+      "ConstSpeed_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      },
+      "DataReplaySybil_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      },
+      "DataReplay_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      },
+      "DelayedMessages_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      },
+      "Disruptive_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      },
+      "DoS_1416": {
+        "f1": 0.2315,
+        "recall": 1.0,
+        "n_attack": 147112
+      },
+      "EventualStop_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      },
+      "RandomPos_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      },
+      "RandomSpeed_1416": {
+        "f1": 0.0952,
+        "recall": 1.0,
+        "n_attack": 51378
+      }
+    }
+  },
+  "compute_H1c": {
+    "arm_iii_ms_per_msg_batch1": 0.14354,
+    "arm_iii_ms_per_msg_batch1024": 0.00015,
+    "rf_ms_per_msg_batch1": 12.9829,
+    "rf_ms_per_msg_batch1024": 0.01226,
+    "arm_iii_model_MB": 0.042,
+    "rf_model_MB": 243.2,
+    "device": "mps"
+  }
+}

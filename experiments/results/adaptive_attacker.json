@@ -1,0 +1,11 @@
+{
+  "note": "adaptive attacker rows are CONSTRUCTED (physics-respecting drift on real benign trajectories), not VeReMi ground truth.",
+  "source_scenario": "ConstPos_1416",
+  "win_offset_m": 25.0,
+  "naive_attacker_flag_rate": 0.9999,
+  "adaptive_attacker_flag_rate": 0.2206,
+  "n_adaptive_messages_scored": 4856,
+  "adaptive_median_offset_m": 43.27,
+  "adaptive_median_r_pos_cv": 0.201,
+  "interpretation": "A physics-consistency detector cannot flag a spoof that respects the motion model; the adaptive attacker sustains a large position offset at a benign-level residual."
+}

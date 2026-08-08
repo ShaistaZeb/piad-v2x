@@ -1,0 +1,48 @@
+name: multiscale_rf
+# Multi-scale physics detector (single-vehicle kinematic scale + multi-vehicle
+# interaction invariants) coupled to a trust-gated pseudonym lifecycle. This
+# configuration reproduces the committed headline result on the VeReMi Extension
+# benchmark: 95.6% accepted-malicious reduction at 0.20% benign false-revocation,
+# 99.6% of persistent attackers isolated at a Kaplan-Meier median of 1.0 s.
+
+data:
+  benchmark: veremi_extension
+  feature_dir: data/features
+  train_window: "_1416"          # detector trained and frozen on this window
+  eval_window: "_0709"           # lifecycle scored on this held-out window
+  persistent_scenarios:
+    - ConstPos
+    - RandomPos
+    - DataReplay
+    - Disruptive
+    - DelayedMessages
+    - DoS
+  seed: 42
+
+detector:
+  core_method: random_forest
+  feature_set: [kinematic, interaction_invariants]   # 16 kinematic + 4 invariants
+  args:
+    n_estimators: 120
+    max_depth: 22
+    class_weight: balanced
+    max_train_rows: 1500000
+  calibration:
+    target_recall: 0.90          # decision threshold selected on validation
+
+trust_gate:
+  aggregator: ewma
+  alpha: 0.8                     # weight on prior trust
+  t0: 0.5                        # neutral initial trust
+  n_min: 5                       # cold-start messages before the gate can fire
+  tau_revoke: 0.15               # pre-registered operating point
+  k_consecutive: 3               # consecutive updates below tau before revocation
+  base_cadence_s: 60.0
+  beta: 1.0
+
+evaluation:
+  bootstrap_resamples: 1000
+  metrics:
+    - accepted_malicious_reduction
+    - false_revocation
+    - time_to_isolate

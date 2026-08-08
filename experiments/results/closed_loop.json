@@ -1,0 +1,194 @@
+[
+  {
+    "scenario": "ConstPos_1416",
+    "n_attacker_msgs": 51378,
+    "accepted_malicious": {
+      "A_fixed": 51378,
+      "C_coupling_off": 6,
+      "D_full_coupling": 0
+    },
+    "accepted_rate": {
+      "A_fixed": 1.0,
+      "C_coupling_off": 0.0001,
+      "D_full_coupling": 0.0
+    },
+    "D_vs_C_relative_reduction": 1.0,
+    "frac_attacker_pseudos_neutralised": 1.0,
+    "mean_attacker_effective_uptime_s": 3.58,
+    "privacy_mean_pseudo_lifetime_s": {
+      "A_fixed": 60.0,
+      "B_context_adaptive": 50.59,
+      "D_full_coupling": 47.99
+    },
+    "privacy_D_no_worse_than_A": true,
+    "detector_flag_rate_on_attackers": 0.9999
+  },
+  {
+    "scenario": "RandomPos_1416",
+    "n_attacker_msgs": 51378,
+    "accepted_malicious": {
+      "A_fixed": 51378,
+      "C_coupling_off": 5,
+      "D_full_coupling": 0
+    },
+    "accepted_rate": {
+      "A_fixed": 1.0,
+      "C_coupling_off": 0.0001,
+      "D_full_coupling": 0.0
+    },
+    "D_vs_C_relative_reduction": 1.0,
+    "frac_attacker_pseudos_neutralised": 1.0,
+    "mean_attacker_effective_uptime_s": 3.66,
+    "privacy_mean_pseudo_lifetime_s": {
+      "A_fixed": 60.0,
+      "B_context_adaptive": 50.59,
+      "D_full_coupling": 48.11
+    },
+    "privacy_D_no_worse_than_A": true,
+    "detector_flag_rate_on_attackers": 0.9999
+  },
+  {
+    "scenario": "DataReplay_1416",
+    "n_attacker_msgs": 51378,
+    "accepted_malicious": {
+      "A_fixed": 51378,
+      "C_coupling_off": 19276,
+      "D_full_coupling": 2483
+    },
+    "accepted_rate": {
+      "A_fixed": 1.0,
+      "C_coupling_off": 0.3752,
+      "D_full_coupling": 0.0483
+    },
+    "D_vs_C_relative_reduction": 0.8712,
+    "frac_attacker_pseudos_neutralised": 0.9706,
+    "mean_attacker_effective_uptime_s": 19.26,
+    "privacy_mean_pseudo_lifetime_s": {
+      "A_fixed": 60.0,
+      "B_context_adaptive": 50.59,
+      "D_full_coupling": 57.3
+    },
+    "privacy_D_no_worse_than_A": true,
+    "detector_flag_rate_on_attackers": 0.6248
+  },
+  {
+    "scenario": "DataReplaySybil_1416",
+    "n_attacker_msgs": 51378,
+    "accepted_malicious": {
+      "A_fixed": 51378,
+      "C_coupling_off": 11749,
+      "D_full_coupling": 11522
+    },
+    "accepted_rate": {
+      "A_fixed": 1.0,
+      "C_coupling_off": 0.2287,
+      "D_full_coupling": 0.2243
+    },
+    "D_vs_C_relative_reduction": 0.0193,
+    "frac_attacker_pseudos_neutralised": 0.1226,
+    "mean_attacker_effective_uptime_s": 7.49,
+    "privacy_mean_pseudo_lifetime_s": {
+      "A_fixed": 60.0,
+      "B_context_adaptive": 54.49,
+      "D_full_coupling": 51.51
+    },
+    "privacy_D_no_worse_than_A": true,
+    "detector_flag_rate_on_attackers": 0.7713
+  },
+  {
+    "scenario": "Disruptive_1416",
+    "n_attacker_msgs": 51378,
+    "accepted_malicious": {
+      "A_fixed": 51378,
+      "C_coupling_off": 1179,
+      "D_full_coupling": 216
+    },
+    "accepted_rate": {
+      "A_fixed": 1.0,
+      "C_coupling_off": 0.0229,
+      "D_full_coupling": 0.0042
+    },
+    "D_vs_C_relative_reduction": 0.8168,
+    "frac_attacker_pseudos_neutralised": 1.0,
+    "mean_attacker_effective_uptime_s": 5.46,
+    "privacy_mean_pseudo_lifetime_s": {
+      "A_fixed": 60.0,
+      "B_context_adaptive": 50.59,
+      "D_full_coupling": 49.39
+    },
+    "privacy_D_no_worse_than_A": true,
+    "detector_flag_rate_on_attackers": 0.9771
+  },
+  {
+    "scenario": "EventualStop_1416",
+    "n_attacker_msgs": 51378,
+    "accepted_malicious": {
+      "A_fixed": 51378,
+      "C_coupling_off": 7989,
+      "D_full_coupling": 7989
+    },
+    "accepted_rate": {
+      "A_fixed": 1.0,
+      "C_coupling_off": 0.1555,
+      "D_full_coupling": 0.1555
+    },
+    "D_vs_C_relative_reduction": 0.0,
+    "frac_attacker_pseudos_neutralised": 0.9804,
+    "mean_attacker_effective_uptime_s": 26.25,
+    "privacy_mean_pseudo_lifetime_s": {
+      "A_fixed": 60.0,
+      "B_context_adaptive": 50.59,
+      "D_full_coupling": 50.72
+    },
+    "privacy_D_no_worse_than_A": true,
+    "detector_flag_rate_on_attackers": 0.8445
+  },
+  {
+    "scenario": "DelayedMessages_1416",
+    "n_attacker_msgs": 51378,
+    "accepted_malicious": {
+      "A_fixed": 51378,
+      "C_coupling_off": 22492,
+      "D_full_coupling": 0
+    },
+    "accepted_rate": {
+      "A_fixed": 1.0,
+      "C_coupling_off": 0.4378,
+      "D_full_coupling": 0.0
+    },
+    "D_vs_C_relative_reduction": 1.0,
+    "frac_attacker_pseudos_neutralised": 1.0,
+    "mean_attacker_effective_uptime_s": 2.74,
+    "privacy_mean_pseudo_lifetime_s": {
+      "A_fixed": 60.0,
+      "B_context_adaptive": 50.59,
+      "D_full_coupling": 53.78
+    },
+    "privacy_D_no_worse_than_A": true,
+    "detector_flag_rate_on_attackers": 0.5622
+  },
+  {
+    "scenario": "DoS_1416",
+    "n_attacker_msgs": 147112,
+    "accepted_malicious": {
+      "A_fixed": 147112,
+      "C_coupling_off": 1108,
+      "D_full_coupling": 140
+    },
+    "accepted_rate": {
+      "A_fixed": 1.0,
+      "C_coupling_off": 0.0075,
+      "D_full_coupling": 0.001
+    },
+    "D_vs_C_relative_reduction": 0.8736,
+    "frac_attacker_pseudos_neutralised": 1.0,
+    "mean_attacker_effective_uptime_s": 2.0,
+    "privacy_mean_pseudo_lifetime_s": {
+      "A_fixed": 60.0,
+      "B_context_adaptive": 50.57,
+      "D_full_coupling": 48.17
+    },
+    "privacy_D_no_worse_than_A": true,
+    "detector_flag_rate_on_attackers": 0.9925
+  }
+]

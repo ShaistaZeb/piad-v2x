@@ -1,0 +1,24 @@
+{
+  "scenario": "DataReplaySybil_0709",
+  "n_attacker_msgs": 866550,
+  "attacker_pseudonyms": 69236,
+  "benign_pseudonyms": 2846,
+  "neutralised_pct": {
+    "D_trust": 0.125,
+    "D_reach": 0.003
+  },
+  "accepted_malicious": {
+    "C": 117823,
+    "D_trust": 116017,
+    "D_reach": 117045
+  },
+  "accepted_rate": {
+    "C": 0.136,
+    "D_trust": 0.134,
+    "D_reach": 0.135
+  },
+  "benign_false_revocation_pct": {
+    "D_trust": 0.007,
+    "D_reach": 0.0
+  }
+}

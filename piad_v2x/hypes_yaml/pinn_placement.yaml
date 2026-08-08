@@ -1,0 +1,46 @@
+name: pinn_placement
+# Detector placement study: where the single-vehicle physics prior belongs
+# (data-only vs residual-as-feature vs residual-in-loss), together with the
+# Lighthill-Whitham-Richards conservation-loss ablation. The finding is a
+# pre-registered negative result: placing the physics in the training loss does
+# not beat placing it in the representation.
+
+data:
+  benchmark: veremi_extension
+  table: data/veremi.parquet
+  rows: 200000
+  holdout_classes: [1, 3, 5, 7, 9]   # unseen-attack split
+  n_splits: 5
+  seed: 17
+
+detector:
+  core_method: pinn
+  args:
+    hidden: [128, 64, 64]
+    dropout: 0.1
+    n_classes: 20
+    lambda_kin: 0.5
+    lambda_lwr: 0.5              # set 0.0 for the kinematic-only variant
+    phys_v_max: 70.0
+    phys_a_max: 10.0
+    phys_r_max: 1.5
+  baseline:
+    core_method: random_forest
+    n_estimators: 120
+    max_depth: 22
+
+optimizer:
+  core_method: adam
+  lr: 0.001
+  weight_decay: 1.0e-5
+
+train_params:
+  epochs: 6
+  batch_size: 512
+  seed: 17
+
+evaluation:
+  operating_point_fpr: 0.05
+  cross_fold:
+    seeds: [17, 23, 42]
+    n_splits: 5

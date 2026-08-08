@@ -1,0 +1,155 @@
+{
+  "protocol": "experiments/PRE_REGISTRATION_H1.md",
+  "mde_relative_reduction": 0.2,
+  "false_revoke_bound": 0.02,
+  "n_bootstrap": 1000,
+  "primary_metric": "accepted malicious messages; reduction = (accC - accD)/accC, coupling-OFF (per-message reject) vs coupling-ON (reject + neutralise)",
+  "scenarios": {
+    "ConstPos_1416": {
+      "regime": "persistent",
+      "reduction_point": 1.0,
+      "reduction_ci95": [
+        0.0,
+        1.0
+      ],
+      "p_one_sided": 0.124,
+      "false_revocation_rate": 0.0127,
+      "false_revocation_ci95": [
+        0.0043,
+        0.0365
+      ],
+      "n_attacker_senders": 102,
+      "n_benign_senders": 237,
+      "p_holm": 0.124,
+      "H1ab_supported": false,
+      "H1c_supported": false
+    },
+    "RandomPos_1416": {
+      "regime": "persistent",
+      "reduction_point": 1.0,
+      "reduction_ci95": [
+        1.0,
+        1.0
+      ],
+      "p_one_sided": 0.002,
+      "false_revocation_rate": 0.0084,
+      "false_revocation_ci95": [
+        0.0023,
+        0.0302
+      ],
+      "n_attacker_senders": 102,
+      "n_benign_senders": 237,
+      "p_holm": 0.004,
+      "H1ab_supported": true,
+      "H1c_supported": false
+    },
+    "DataReplay_1416": {
+      "regime": "persistent",
+      "reduction_point": 0.8712,
+      "reduction_ci95": [
+        0.8331,
+        0.9016
+      ],
+      "p_one_sided": 0.0,
+      "false_revocation_rate": 0.038,
+      "false_revocation_ci95": [
+        0.0201,
+        0.0706
+      ],
+      "n_attacker_senders": 102,
+      "n_benign_senders": 237,
+      "p_holm": 0.0,
+      "H1ab_supported": true,
+      "H1c_supported": false
+    },
+    "Disruptive_1416": {
+      "regime": "persistent",
+      "reduction_point": 0.8168,
+      "reduction_ci95": [
+        0.7586,
+        0.8656
+      ],
+      "p_one_sided": 0.0,
+      "false_revocation_rate": 0.0084,
+      "false_revocation_ci95": [
+        0.0023,
+        0.0302
+      ],
+      "n_attacker_senders": 102,
+      "n_benign_senders": 237,
+      "p_holm": 0.0,
+      "H1ab_supported": true,
+      "H1c_supported": false
+    },
+    "DelayedMessages_1416": {
+      "regime": "persistent",
+      "reduction_point": 1.0,
+      "reduction_ci95": [
+        1.0,
+        1.0
+      ],
+      "p_one_sided": 0.0,
+      "false_revocation_rate": 0.0169,
+      "false_revocation_ci95": [
+        0.0066,
+        0.0426
+      ],
+      "n_attacker_senders": 102,
+      "n_benign_senders": 237,
+      "p_holm": 0.0,
+      "H1ab_supported": true,
+      "H1c_supported": false
+    },
+    "DoS_1416": {
+      "regime": "persistent",
+      "reduction_point": 0.8736,
+      "reduction_ci95": [
+        0.8359,
+        0.9095
+      ],
+      "p_one_sided": 0.0,
+      "false_revocation_rate": 0.0127,
+      "false_revocation_ci95": [
+        0.0043,
+        0.0365
+      ],
+      "n_attacker_senders": 102,
+      "n_benign_senders": 237,
+      "p_holm": 0.0,
+      "H1ab_supported": true,
+      "H1c_supported": false
+    },
+    "DataReplaySybil_1416": {
+      "regime": "sybil",
+      "reduction_point": 0.0193,
+      "reduction_ci95": [
+        0.0089,
+        0.0317
+      ],
+      "p_one_sided": 0.0,
+      "false_revocation_rate": 0.0211,
+      "false_revocation_ci95": [
+        0.009,
+        0.0484
+      ],
+      "n_attacker_senders": 102,
+      "n_benign_senders": 237
+    },
+    "EventualStop_1416": {
+      "regime": "other",
+      "reduction_point": 0.0,
+      "reduction_ci95": [
+        0.0,
+        0.0
+      ],
+      "p_one_sided": 1.0,
+      "false_revocation_rate": 0.0127,
+      "false_revocation_ci95": [
+        0.0043,
+        0.0365
+      ],
+      "n_attacker_senders": 102,
+      "n_benign_senders": 237
+    }
+  }
+}
