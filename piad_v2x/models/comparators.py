@@ -7,8 +7,7 @@ exposes the same `cadence(neighbourhood) -> float` and
 interchangeably. The baselines accept `neighbourhood` for signature parity but
 ignore it; only `CouplingLayer` uses it to physics-condition the gate.
 
-The three comparators map onto the comparator papers cited in the literature
-audit and in the dissertation prep materials:
+The three comparators map onto the comparator methods cited in the literature:
 
 - ContextOnlyCoupling   (SAPACS-style): rotation cadence reacts to density
                                         and configured privacy level only;
@@ -151,7 +150,7 @@ class ChurnHintConfig:
     pseudonym-churn rate `kappa_t` exceeds `kappa_threshold`. Unlike the
     trust-based revocation_hint, it does NOT require the per-peer trust
     signal to be below `theta_revoke` - so it survives attackers (e.g.
-    A-PHY-1) who defeat the per-message detector.
+    kinematic-respecting Sybils) who defeat the per-message detector.
 
     Defaults targeted at the rotation_dos scenario, which spawns 20 sybils
     simultaneously: `kappa_threshold = 3.0` flags any neighbourhood seeing
@@ -162,7 +161,7 @@ class ChurnHintConfig:
     hint_strength: float = 0.6
 
 
-class FullDD007ChurnHint(CouplingLayer):
+class ChurnHintCoupling(CouplingLayer):
     """Full coupling + trust-independent churn hint path.
 
     Inherits cadence() and trust-based revocation_hint() from CouplingLayer
@@ -203,7 +202,7 @@ class FullDD007ChurnHint(CouplingLayer):
 class DensityHintConfig:
     """Configuration for the cumulative-density hint path.
 
-    CL-3 identified that A-PHY-1 Sybil attackers staggering arrivals at
+    Staggered-arrival Sybil attackers stagger arrivals at
     `inter_arrival_s >= 2s` defeat the churn-hint (kappa_t stays at
     baseline). The density-hint targets that gap by tracking the TOTAL
     unique pseudonyms observed by this node, regardless of instantaneous
@@ -223,11 +222,11 @@ class DensityHintConfig:
     hint_strength: float = 0.6
 
 
-class FullDD007DensityHint(FullDD007ChurnHint):
+class DensityHintCoupling(ChurnHintCoupling):
     """Full coupling + churn-hint + cumulative-density hint.
 
     Inherits cadence(), trust-based revocation_hint(), and the
-    churn_hint() from FullDD007ChurnHint unchanged. Adds an internal
+    churn_hint() from ChurnHintCoupling unchanged. Adds an internal
     per-pseudonym first_seen registry consumed by density_hint().
 
     The simulator calls density_hint via duck-typing and merges its
@@ -271,7 +270,7 @@ class FullDD007DensityHint(FullDD007ChurnHint):
         return _clamp(0.0, 1.0, cfg.hint_strength * normalised)
 
 
-# ------------------ Naive threshold-based revocation (Phase 1 baseline) ------------------
+# ------------------ Naive threshold-based revocation (detection-only baseline) ------------------
 
 @dataclass(frozen=True)
 class NaiveThresholdConfig:
@@ -323,8 +322,8 @@ COUPLING_VARIANTS = {
     "no_coupling":          NoCoupling,
     "context_only":         ContextOnlyCoupling,
     "trust_only":           TrustOnlyCoupling,
-    "full_dd007":           CouplingLayer,
-    "full_dd007_churn":     FullDD007ChurnHint,
-    "full_dd007_density":   FullDD007DensityHint,
+    "full_coupling":           CouplingLayer,
+    "full_churn_hint":     ChurnHintCoupling,
+    "full_density_hint":   DensityHintCoupling,
     "naive_revocation":     NaiveThresholdRevocation,
 }

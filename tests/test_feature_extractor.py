@@ -1,4 +1,4 @@
-"""Tests for C1 feature extractor (W2)."""
+"""Tests for the feature extractor."""
 from __future__ import annotations
 
 import unittest

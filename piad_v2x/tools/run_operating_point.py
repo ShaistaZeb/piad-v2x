@@ -133,7 +133,7 @@ def main():
               and confirm["mean_false_revocation"] is not None
               and confirm["mean_false_revocation"] <= FR_BOUND)
     summary = {
-        "protocol": "operating-point confirmation (pre-registered)",
+        "protocol": "operating-point confirmation",
         "window": "_0709 (held-out; detector trained on _1416, all senders unseen)",
         "mde_reduction": MDE, "fr_bound": FR_BOUND,
         "pre_registered_point": confirm,

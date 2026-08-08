@@ -21,7 +21,7 @@ in the features) vs the full multi-scale detector (kinematic + multi-vehicle int
 invariants). We report per-class univariate ROC-AUC (attacker vs benign) for each
 observable, and a leakage-safe (sender group-split) RF on each. It localises which scale
 carries the coordinated-attack signal: on the hard classes, full multi-scale AUC >>
-single-vehicle AUC supports the thesis; parity refutes it.
+single-vehicle AUC supports the coupling claim; parity refutes it.
 """
 import glob, os, json
 import numpy as np, pandas as pd
@@ -33,7 +33,7 @@ VMAX = 50.0    # m/s upper bound
 DMIN = 5.0     # m vehicle footprint
 R = 150.0      # m neighbour radius for TTC
 HARD = {"DataReplay_1416","DataReplaySybil_1416","Disruptive_1416","EventualStop_1416"}
-# FULL single-vehicle set (matches Phase-D data-only arm) - fair baseline.
+# FULL single-vehicle set (data-only variant) - fair baseline.
 # NB: disp & dt are here, so the "own-step reachability" ratio is derivable -> it
 # belongs to single-vehicle, NOT to the relational set.
 KINEMATIC = ["px","py","sx","sy","ax","ay","hx","hy","spd_mag","acl_mag",

@@ -33,8 +33,8 @@
       0.9527,
       0.9592
     ],
-    "arm_C_accepted_malicious_total": 566497,
-    "arm_D_accepted_malicious_total": 24919,
+    "variant_C_accepted_malicious_total": 566497,
+    "variant_D_accepted_malicious_total": 24919,
     "n_attacker_senders": 7326
   },
   "false_revocation": {

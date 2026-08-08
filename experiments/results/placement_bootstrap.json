@@ -1,27 +1,27 @@
 {
   "point_macro_f1_hard": {
-    "arm_i": 0.3119,
-    "arm_ii": 0.3335,
-    "arm_iii": 0.3234
+    "variant_i": 0.3119,
+    "variant_ii": 0.3335,
+    "variant_iii": 0.3234
   },
   "MDE": 0.02,
-  "H1a_iii_vs_i": {
+  "loss_vs_data": {
     "mean": 0.0117,
     "ci_lo": -0.0081,
     "ci_hi": 0.0326,
     "p": 0.264
   },
-  "H1b_iii_vs_ii": {
+  "loss_vs_feature": {
     "mean": -0.0101,
     "ci_lo": -0.028,
     "ci_hi": 0.0053,
     "p": 0.204
   },
   "holm_adjusted_p": {
-    "H1b_iii_vs_ii": 0.408,
-    "H1a_iii_vs_i": 0.264
+    "loss_vs_feature": 0.408,
+    "loss_vs_data": 0.264
   },
-  "verdict_H1a": "refuted (indistinguishable / below MDE)",
-  "verdict_H1b": "refuted (indistinguishable / below MDE)",
+  "verdict_loss_vs_data": "refuted (indistinguishable / below MDE)",
+  "verdict_loss_vs_feature": "refuted (indistinguishable / below MDE)",
   "n_sender_groups": 339
 }

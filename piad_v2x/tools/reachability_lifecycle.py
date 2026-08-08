@@ -12,7 +12,7 @@ pseudonym jump farther than v_max*dt.
 Three lifecycle gates on the Sybil scenario, same accepted-malicious outcome
 (malicious messages accepted before neutralisation) + benign false-revocation cost:
   C       per-message detector flag only (no lifecycle action)
-  D_trust aggregated detector-trust EMA gate (Phase-D heuristic)
+  D_trust aggregated detector-trust EMA gate
   D_reach reachability gate: revoke a pseudonym at its first physical
           discontinuity (|dpos| > v_max*dt)
 """

@@ -102,7 +102,7 @@ def stealthy_attacker(
     Default 3-attack / 7-benign cycle keeps the EMA-trust above θ_revoke=0.3
     while still firing attack-shaped messages periodically. Tests whether
     the strict revocation gate (theta_revoke + persistence k) blocks the
-    hint, and whether D7 / φ_t could catch what the trust path misses.
+    hint, and whether the φ_t flag could catch what the trust path misses.
     """
     out: list[dict] = []
     n_frames = int(duration_s * rate_hz)
@@ -157,7 +157,7 @@ def staggered_rotation_dos(
     start_pk: int = 60000,
     attack_class: int = 5,
 ) -> list[dict]:
-    """CL-3: N pseudonyms arriving STAGGERED to defeat churn-hint detection.
+    """N pseudonyms arriving STAGGERED to defeat churn-hint detection.
 
     Unlike `coordinated_rotation_dos` (all sybils start at t=0), this
     constructor staggers sybil first-appearances at `inter_arrival_s`
@@ -195,7 +195,7 @@ def staged_retirement_sybil(
     start_pk: int = 80000,
     attack_class: int = 5,
 ) -> list[dict]:
-    """CL-6: bounded concurrent Sybils with periodic pseudonym retirement.
+    """Bounded concurrent Sybils with periodic pseudonym retirement.
 
     Maintains exactly `n_concurrent` active pseudonyms at any time. Every
     `rotation_period_s` seconds, each active pseudonym is retired (stops

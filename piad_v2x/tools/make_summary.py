@@ -1,7 +1,7 @@
 """Assemble checkpoints/experiment_summary.md from the measured artifacts.
 
 Reads manifest.json + evaluation.json (the single sources of truth produced by
-train.py / inference.py) and emits a dissertation-ready summary that strictly
+train.py / inference.py) and emits a publication-ready summary that strictly
 separates the Observed result (measured numbers, verbatim) from Interpretation
 (ordering + caveats). It invents no numbers and makes no statistical claim:
 a single seed / single fold cannot establish significance, and the summary

@@ -198,8 +198,8 @@ class TestKinematicRespecting(unittest.TestCase):
         self.assertAlmostEqual(out["spdx"].iloc[0], 100.0, places=4)
 
     def test_persistent_matching_keeps_within_vehicle_variance_low(self):
-        """A-PHY-4: same-pseudonym attack messages should have lower
-        spdx variance than A-PHY-3 (i.i.d. mixture sampling) because
+        """Same-pseudonym attack messages should have lower
+        spdx variance than the i.i.d. GMM sampler because
         all draws come from the SAME Gaussian."""
         rng = np.random.default_rng(0)
         benign_rows = []
@@ -230,25 +230,25 @@ class TestKinematicRespecting(unittest.TestCase):
             })
         attack_df = _build_df(attack_rows)
 
-        # A-PHY-3 mixes both components within this single vehicle's stream.
+        # the i.i.d. GMM sampler mixes both components within this single vehicle's stream.
         out3 = make_distribution_matching(attack_df, gmm,
                                             target_classes=(13,), seed=0)
         var3 = float(np.var(out3["spdx"].iloc[1:].values))
 
-        # A-PHY-4 sticks to one component; within-vehicle variance should be
+        # the persistent-component sampler sticks to one component; within-vehicle variance should be
         # SMALL (~0.3^2 = 0.09 for one cluster) regardless of which one chosen.
         out4 = make_distribution_matching_persistent(
             attack_df, gmm, target_classes=(13,), seed=0,
         )
         var4 = float(np.var(out4["spdx"].iloc[1:].values))
 
-        # A-PHY-4 variance should be MUCH lower than A-PHY-3 (mixing two
+        # persistent-component variance should be MUCH lower than the i.i.d. GMM sampler (mixing two
         # clusters spread 30 m/s apart inflates the variance).
         self.assertLess(var4, var3 * 0.5)
 
     def test_ar1_matching_reduces_first_order_differences(self):
-        """A-PHY-5: AR(1)-smoothed sampling should produce LOWER
-        consecutive speed differences than A-PHY-3 i.i.d. sampling
+        """AR(1)-smoothed sampling should produce LOWER
+        consecutive speed differences than i.i.d. GMM sampling
         when alpha is high."""
         rng = np.random.default_rng(0)
         benign_rows = []

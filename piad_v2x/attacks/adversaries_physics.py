@@ -1,24 +1,23 @@
 """Physics-aware adversary constructions.
 
-Defines the A-PHY-1..6 attack classes from the physics-aware threat
-model (`framework/specs/physics_aware_threat_model.md`). Each
+A family of physics-aware attack constructors. Each
 constructor rewrites VeReMi attack messages to satisfy one or more
 of the defender's physics priors:
 
-- A-PHY-1 (`make_kinematic_respecting`): zero kinematic residual e_v.
-- A-PHY-2 (`make_kinematic_capped`): + cap implied speed at v_max.
-- A-PHY-3 (`make_distribution_matching`): + sample speeds from a
+- `make_kinematic_respecting`: zero kinematic residual e_v.
+- `make_kinematic_capped`: + cap implied speed at v_max.
+- `make_distribution_matching`: + sample speeds from a
   benign GMM (i.i.d.).
-- A-PHY-4 (`make_distribution_matching_persistent`): + per-vehicle
+- `make_distribution_matching_persistent`: + per-vehicle
   consistent GMM component (driving style).
-- A-PHY-5 (`make_distribution_matching_ar1`): + AR(1) speed
+- `make_distribution_matching_ar1`: + AR(1) speed
   auto-correlation.
-- A-PHY-6 (`make_road_grid_aware`): + snap positions to a coarse
+- `make_road_grid_aware`: + snap positions to a coarse
   grid (proxy for road-network constraint).
 
 All constructors share the kinematic-respecting + benign-distribution
-sampling base. A-PHY-6 adds a STRUCTURAL constraint that the prior
-A-PHY classes did not address.
+sampling base. `make_road_grid_aware` adds a STRUCTURAL constraint that
+the prior constructors did not address.
 """
 from __future__ import annotations
 
@@ -34,7 +33,7 @@ def make_kinematic_respecting(
     min_dt: float = 0.05,
     max_dt: float = 1.0,
 ) -> pd.DataFrame:
-    """A-PHY-1: rewrite attack messages so the reported speed matches
+    """Rewrite attack messages so the reported speed matches
     the implied speed from consecutive positions, eliminating the
     residual e_v signal.
     """
@@ -123,7 +122,7 @@ def make_distribution_matching(
     max_dt: float = 1.0,
     seed: int = 17,
 ) -> pd.DataFrame:
-    """A-PHY-3: rewrite attack messages with GMM-sampled benign-looking
+    """Rewrite attack messages with GMM-sampled benign-looking
     speed trajectories. See module docstring for details.
     """
     if "class" not in df.columns:
@@ -192,7 +191,7 @@ def make_distribution_matching_persistent(
     max_dt: float = 1.0,
     seed: int = 17,
 ) -> pd.DataFrame:
-    """A-PHY-4: per-vehicle persistent-component GMM sampling."""
+    """Per-vehicle persistent-component GMM sampling."""
     if "class" not in df.columns:
         raise ValueError("df must have 'class' column")
     if target_classes is None:
@@ -267,7 +266,7 @@ def make_distribution_matching_ar1(
     max_dt: float = 1.0,
     seed: int = 17,
 ) -> pd.DataFrame:
-    """A-PHY-5: AR(1)-smoothed GMM speed sampling."""
+    """AR(1)-smoothed GMM speed sampling."""
     if "class" not in df.columns:
         raise ValueError("df must have 'class' column")
     if target_classes is None:
@@ -341,16 +340,16 @@ def make_road_grid_aware(
     max_dt: float = 1.0,
     seed: int = 17,
 ) -> pd.DataFrame:
-    """A-PHY-6: road-grid-snapped + AR(1) GMM trajectory.
+    """Road-grid-snapped + AR(1) GMM trajectory.
 
-    Extends A-PHY-5 by additionally snapping positions to a coarse
+    Extends the AR(1) sampler by additionally snapping positions to a coarse
     grid (default 50m squares) - a proxy for road-network constraint
     that does not require an actual OSM map. Trajectories therefore
     move along grid axes rather than random-walk in continuous space.
 
     Implementation:
     - At each attack message, compute the AR(1)-smoothed GMM speed
-      sample (as A-PHY-5).
+      sample (as in the AR(1) sampler).
     - Integrate position forward.
     - Snap the integrated position to the nearest grid intersection
       every K steps (K = grid_size / typical_step_size).
@@ -449,7 +448,7 @@ def make_kinematic_capped(
     min_dt: float = 0.05,
     max_dt: float = 1.0,
 ) -> pd.DataFrame:
-    """A-PHY-2: rewrite attack messages to satisfy kinematic continuity
+    """Rewrite attack messages to satisfy kinematic continuity
     AND magnitude bounds.
     """
     if "class" not in df.columns:

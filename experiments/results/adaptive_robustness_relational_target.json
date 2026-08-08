@@ -1,5 +1,5 @@
 {
-  "protocol": "experiments/PRE_REGISTRATION_H_robust.md",
+  "protocol": "adaptive robustness (goal-preserving white-box attacker; relational target)",
   "eps_grid": [
     0.0,
     0.25,

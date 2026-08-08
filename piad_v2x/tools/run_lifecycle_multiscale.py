@@ -1,17 +1,17 @@
 """Lifecycle outcomes with the MULTI-SCALE detector wired in, plus cluster-bootstrap CIs.
 
-Closes the coherence gap the examiner gate found: the earlier lifecycle runs
-(operating_point, time_to_isolate) were driven by the base kinematic detector
-(rf.joblib), not the multi-scale detector of the detection chapter. This script trains a
-multi-scale detector (KINEMATIC + multi-vehicle interaction invariants) STRICTLY on the
-_1416 window, freezes it, and scores the held-out _0709 window (every _0709 sender unseen),
-so the detector that drives the lifecycle is the same one the ablation chapter reports.
+Runs the lifecycle with the same multi-scale detector used for the detection
+ablation, so the two stay coherent. The earlier lifecycle runs (operating_point,
+time_to_isolate) were driven by the base kinematic detector (rf.joblib). This script
+trains a multi-scale detector (KINEMATIC + multi-vehicle interaction invariants)
+STRICTLY on the _1416 window, freezes it, and scores the held-out _0709 window
+(every _0709 sender unseen).
 Training only on _1416 also removes a latent leakage concern in the base rf.joblib (which
 was trained across all scenarios).
 
 Both isolation-outcome metrics are computed at the pre-registered operating point
 (TAU=0.15, K=3), each with a 95 percent cluster bootstrap over senders:
-  - accepted-malicious-message reduction (arm D over arm C), persistent classes
+  - accepted-malicious-message reduction (variant D over variant C), persistent classes
   - benign false-revocation rate
   - time-to-isolate (Kaplan-Meier median, right-censoring never-isolated pseudonyms)
 
@@ -150,7 +150,7 @@ def main():
         raise SystemExit(f"oracle check failed: {bad}")
     rf, thr = train_multiscale_1416()
 
-    # per attacker sender: accepted-malicious under arm C / arm D; per benign sender:
+    # per attacker sender: accepted-malicious under variant C / variant D; per benign sender:
     # revoked flag; per attacker pseudonym: (t_neu, t0, n) for time-to-isolate.
     accC, accD = {}, {}            # keyed by (scenario, sender)
     benign_rev, benign_all = set(), set()
@@ -243,8 +243,8 @@ def main():
         "detector_flag_rate_on_attackers_mean": round(float(np.mean(flag_on_atk)), 4),
         "accepted_malicious_reduction": {
             "point": round(red_point, 4), "ci95": ci(red_bs),
-            "arm_C_accepted_malicious_total": int(C.sum()),
-            "arm_D_accepted_malicious_total": int(D.sum()),
+            "variant_C_accepted_malicious_total": int(C.sum()),
+            "variant_D_accepted_malicious_total": int(D.sum()),
             "n_attacker_senders": nA},
         "false_revocation": {
             "point": round(fr_point, 4), "ci95": ci(fr_bs),

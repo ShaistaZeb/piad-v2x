@@ -3,10 +3,9 @@
 Binary detection metrics (benign vs misbehaviour) for held-out attack types,
 plus matplotlib plots of confusion matrices and per-class F1 bars.
 
-The hypothesis under test is that the multi-physics PINN (L_kin + L_lwr)
-recognises coordinated attack patterns that the kinematic-only baseline
-misses. This module provides the comparison apparatus; the actual claim
-is tested in `experiments/run_w4_holdout.py`.
+This module compares the multi-physics PINN (L_kin + L_lwr) against the
+kinematic-only baseline on held-out attack types, and provides the
+metrics and plots for that comparison.
 """
 from __future__ import annotations
 

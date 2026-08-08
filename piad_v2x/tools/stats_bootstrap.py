@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Cluster bootstrap over SENDERS for the placement-study family (pre-registered).
+Cluster bootstrap over SENDERS for the placement-study family.
 
 Resamples sender groups (gid) with replacement, recomputes macro-F1 on the hard
-classes for each arm, and reports paired differences (Arm iii - Arm i) and
-(Arm iii - Arm ii) with 95% CIs and Holm-Bonferroni. Efficient: per-gid, per-arm
+classes for each variant, and reports paired differences (Variant iii - Variant i) and
+(Variant iii - Variant ii) with 95% CIs and Holm-Bonferroni. Efficient: per-gid, per-variant
 confusion counts are precomputed, so each bootstrap replicate is a sum over
 sampled gids, not a re-scan of millions of rows.
 """
@@ -64,9 +64,9 @@ def macro_f1_hard(sampled_gids, counts):
 def main():
     d = load()
     y = d["y"]; gid = d["gid"].astype(str); ac = d["attack_class"].astype(str)
-    arms = {"arm_i": (d["arm_i"], float(d["thr_i"])),
-            "arm_ii": (d["arm_ii"], float(d["thr_ii"])),
-            "arm_iii": (d["arm_iii"], float(d["thr_iii"]))}
+    arms = {"variant_i": (d["variant_i"], float(d["thr_i"])),
+            "variant_ii": (d["variant_ii"], float(d["thr_ii"])),
+            "variant_iii": (d["variant_iii"], float(d["thr_iii"]))}
     counts = {a: per_gid_counts(y, gid, ac, p, t) for a, (p, t) in arms.items()}
     uniq = np.unique(gid); n = len(uniq)
     rng = np.random.default_rng(SEED)
@@ -75,9 +75,9 @@ def main():
     diffs = {"iii_minus_i": [], "iii_minus_ii": []}
     for _ in range(NREP):
         samp = rng.choice(uniq, size=n, replace=True)
-        f_i = macro_f1_hard(samp, counts["arm_i"])
-        f_ii = macro_f1_hard(samp, counts["arm_ii"])
-        f_iii = macro_f1_hard(samp, counts["arm_iii"])
+        f_i = macro_f1_hard(samp, counts["variant_i"])
+        f_ii = macro_f1_hard(samp, counts["variant_ii"])
+        f_iii = macro_f1_hard(samp, counts["variant_iii"])
         diffs["iii_minus_i"].append(f_iii - f_i)
         diffs["iii_minus_ii"].append(f_iii - f_ii)
 
@@ -91,11 +91,11 @@ def main():
 
     out = {"point_macro_f1_hard": {a: round(point[a], 4) for a in arms},
            "MDE": MDE,
-           "H1a_iii_vs_i": summ(diffs["iii_minus_i"]),
-           "H1b_iii_vs_ii": summ(diffs["iii_minus_ii"])}
+           "loss_vs_data": summ(diffs["iii_minus_i"]),
+           "loss_vs_feature": summ(diffs["iii_minus_ii"])}
     # Holm-Bonferroni over the 2 family tests
-    tests = [("H1a_iii_vs_i", out["H1a_iii_vs_i"]["p"]),
-             ("H1b_iii_vs_ii", out["H1b_iii_vs_ii"]["p"])]
+    tests = [("loss_vs_data", out["loss_vs_data"]["p"]),
+             ("loss_vs_feature", out["loss_vs_feature"]["p"])]
     tests.sort(key=lambda x: x[1])
     m = len(tests); holm = {}
     for i, (name, p) in enumerate(tests):
@@ -107,8 +107,8 @@ def main():
         return "supported" if meaningful else (
             "refuted (indistinguishable / below MDE)" if abs(diff["mean"]) < MDE or diff["ci_lo"] <= 0 <= diff["ci_hi"]
             else "not supported")
-    out["verdict_H1a"] = verdict(out["H1a_iii_vs_i"], holm["H1a_iii_vs_i"])
-    out["verdict_H1b"] = verdict(out["H1b_iii_vs_ii"], holm["H1b_iii_vs_ii"])
+    out["verdict_loss_vs_data"] = verdict(out["loss_vs_data"], holm["loss_vs_data"])
+    out["verdict_loss_vs_feature"] = verdict(out["loss_vs_feature"], holm["loss_vs_feature"])
     out["n_sender_groups"] = int(n)
 
     with open(os.path.join(RES, "placement_bootstrap.json"), "w") as f:

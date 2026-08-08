@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "PIAD-V2X: Physics-Informed Adaptive Defence for V2X"
+authors:
+  - family-names: Zeb
+    given-names: Shaista
+version: "0.1.0"
+license: MIT
+repository-code: "https://github.com/ShaistaZeb/piad-v2x"

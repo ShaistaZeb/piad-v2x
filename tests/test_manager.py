@@ -1,4 +1,4 @@
-"""Tests for the mock pseudonym manager (C5, W5)."""
+"""Tests for the mock pseudonym manager."""
 import unittest
 
 from piad_v2x.lifecycle.manager import MockPseudonymManager

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build experiments/dataset_card.md: real N per scenario (rows, senders, class
-balance, residual separation). Data description only - not a hypothesis test."""
+balance, residual separation). Data description only."""
 import glob, os
 import numpy as np, pandas as pd
 

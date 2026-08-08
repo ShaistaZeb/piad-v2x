@@ -63,11 +63,11 @@ def run_scenario(scen_path, rf, sc, test_senders):
     atk = df[df.is_attacker == 1]
     n_atk = len(atk)
 
-    # Arm A fixed: no reject, no revocation -> all malicious accepted
+    # Variant A fixed: no reject, no revocation -> all malicious accepted
     accA = n_atk
-    # Arm C coupling-OFF: reject per-message flagged -> accepted = unflagged attacker msgs
+    # Variant C coupling-OFF: reject per-message flagged -> accepted = unflagged attacker msgs
     accC = int(((atk.flagged == 0)).sum())
-    # Arm D full coupling: reject flagged OR from neutralised pseudonym (rcvTime>=t_neu)
+    # Variant D full coupling: reject flagged OR from neutralised pseudonym (rcvTime>=t_neu)
     accD = int(((atk.flagged == 0) & (atk.rcvTime < atk.t_neu)).sum())
 
     # secondary: attacker pseudonyms ever neutralised

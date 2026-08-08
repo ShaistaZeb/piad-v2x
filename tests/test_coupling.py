@@ -1,4 +1,4 @@
-"""Verifies coupling layer against properties P1 to P10 from coupling_spec.md.
+"""Verifies the coupling layer's cadence and revocation-gate properties.
 
 Run from `backend/` directory:
     python -m unittest discover -s tests -v
@@ -139,7 +139,7 @@ class DefenceClaims(unittest.TestCase):
 
 
 class PhysicsInformedModulators(unittest.TestCase):
-    """DD-007: g_density(ρ_t) and g_churn(κ_t) shape the cadence response."""
+    """g_density(ρ_t) and g_churn(κ_t) shape the cadence response."""
 
     def setUp(self) -> None:
         self.layer = CouplingLayer()
@@ -191,7 +191,7 @@ class PhysicsInformedModulators(unittest.TestCase):
         extreme = self.layer.cadence(self._hostile_summary(rho_t=20.0, kappa_t=1.0e6))
         self.assertAlmostEqual(very_high, extreme)
 
-    def test_dd007_hostile_dense_low_churn_vs_high_churn(self) -> None:
+    def test_hostile_dense_low_churn_vs_high_churn(self) -> None:
         """Operational claim: under identical trust+density, high churn
         produces lower cadence than low churn. This is what stops a Sybil swarm
         from weaponising its own churn signal."""
@@ -199,7 +199,7 @@ class PhysicsInformedModulators(unittest.TestCase):
         dense_high_churn = self.layer.cadence(self._hostile_summary(rho_t=25.0, kappa_t=5.0))
         self.assertGreater(dense_low_churn, dense_high_churn)
 
-    def test_dd007_density_modulator_still_bounded_by_C_max(self) -> None:
+    def test_density_modulator_still_bounded_by_C_max(self) -> None:
         """g_density amplification cannot breach C_max."""
         worst = NeighbourhoodSummary(
             mean=0.0, q25=0.0, n=100, rho_t=200.0, drho_dt=0.0, kappa_t=0.0,
@@ -208,10 +208,7 @@ class PhysicsInformedModulators(unittest.TestCase):
 
 
 class PhysicsConditionedRevocationGate(unittest.TestCase):
-    """DD-008 S4: θ_revoke is conditioned on neighbourhood physics (ρ_t, κ_t).
-
-    Verifies properties P11 to P14 of coupling_spec.md §4.4.
-    """
+    """θ_revoke is conditioned on neighbourhood physics (ρ_t, κ_t)."""
 
     def setUp(self) -> None:
         # S4 is opt-in (gamma_revoke defaults to 0.0); enable it explicitly.

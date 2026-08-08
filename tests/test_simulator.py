@@ -1,4 +1,4 @@
-"""Tests for the end-to-end streaming simulator (W5).
+"""Tests for the end-to-end streaming simulator.
 
 Includes the D1 / P1 timing-bound check: given a persistent low-trust signal
 for one peer, the C5 mock manager must receive its first non-zero revocation

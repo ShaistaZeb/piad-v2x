@@ -1,4 +1,4 @@
-"""Tests for W4 held-out attack evaluation utilities."""
+"""Tests for the held-out attack evaluation utilities."""
 from __future__ import annotations
 
 import unittest

@@ -1,4 +1,4 @@
-"""Tests for the W3 multi-physics PINN detector."""
+"""Tests for the multi-physics PINN detector."""
 from __future__ import annotations
 
 import unittest
@@ -160,7 +160,7 @@ class SmallTrainingRun(unittest.TestCase):
 
 
 class PhysicsConstrainedHead(unittest.TestCase):
-    """Candidate D: physics embedded in the architecture (DD-009)."""
+    """Physics embedded in the architecture."""
 
     def test_predictions_within_feasible_envelope(self) -> None:
         # The bounded kin head cannot emit a physically impossible state,

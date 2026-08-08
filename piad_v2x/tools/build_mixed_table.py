@@ -2,7 +2,7 @@
 
 This is the join that collapses the project to ONE data pipeline. the loss-based phase (the
 physics-in-loss detector) originally consumed a separate pre-flattened MixAll CSV;
-that CSV is retired (moved to the dissertation drafts). Both studies now derive from
+that CSV is retired. Both studies now derive from
 the SAME raw extraction:
 
     raw VeReMi Extension zips
@@ -13,10 +13,8 @@ Run from the repository root:
 
     python piad_v2x/tools/build_mixed_table.py --out data/veremi.parquet
 
-STATUS: scaffold - the column map is deterministic and verified by inspection against
-piad_v2x/dataset.py (SIM_COLS + ID_COLS) and piad_v2x/tools/veremi_extract.py, but this has NOT
-yet been executed on the full feature set. Re-run the loss-based detector on the output and update
-tests/test_phase1_results.py to the regenerated numbers before treating them as final.
+The column map is deterministic and verified by inspection against the
+extractor in piad_v2x/tools/veremi_extract.py.
 
 Two correctness points baked in:
   1. Column rename: the extractor px/py/sx/sy/ax/ay/hx/hy -> the loaders
@@ -84,8 +82,7 @@ def main():
     out.to_parquet(args.out, index=False)
     print(f"\nwrote {len(out):,} rows across {len(frames)} scenarios -> {args.out}")
     print("Loss-based detector: point --data at this file "
-          "(load_messages reads .parquet natively). Then re-run and update "
-          "tests/test_phase1_results.py.")
+          "(load_messages reads .parquet natively).")
 
 
 if __name__ == "__main__":

@@ -3,3 +3,4 @@
 *.joblib binary
 *.parquet binary
 *.pt binary
+*.npz binary

@@ -1,25 +1,21 @@
-"""Regression guard for the CURRENT dissertation/paper headline numbers.
+"""Regression guard for the published headline numbers.
 
-Pins the committed result JSONs that feed the locked claims in the dissertation
-(Chapters 4-6, abstract) and the conference paper, so that a silent change in the
+Pins the committed result JSONs that feed the published headline numbers, so that a silent change in the
 pipeline, or an accidental edit to a committed result file, that would desynchronise
 the prose from the evidence fails the test suite. Uses only the standard library
 (json) so it adds no dependency. Tolerances are loose: the test guards the claims as
 written, not bit-identity.
 
-Added 2026-07-19 during the publication-readiness pass. It supersedes the inert
-`test_phase1_results.py`, which pins a stale legacy path (`phase1_veremi_eval/`) that
-is no longer the headline and skips cleanly when absent. Each test here skips only if
-its specific result file is missing from the checkout.
+Each test here skips only if its specific result file is missing from the checkout.
 
-The exact prose these numbers back:
-  - abstract / ch1 / ch5 / paper headline: 95.6% accepted-malicious reduction at
+The numbers guarded here:
+  - headline: 95.6% accepted-malicious reduction at
     0.20% benign false-revocation, 99.6% isolated, 1.0 s median time-to-isolate.
-  - ch5 / ch6 / book Sybil boundary: reachability gate 0.3%, aggregated-trust gate
+  - Sybil boundary: reachability gate 0.3%, aggregated-trust gate
     12.5% neutralisation of Sybil pseudonyms.
-  - ch4 full-corpus closed loop (base kinematic detector): Data Replay Sybil reduces
+  - full-corpus closed loop (base kinematic detector): Data Replay Sybil reduces
     only 1.9% and neutralises only 12% of pseudonyms (the honest Sybil-defeats-it cut).
-  - ch4 scoping negative: physics-in-loss (H1a/H1b) refuted / indistinguishable.
+  - scoping negative: physics-in-loss refuted / indistinguishable.
 """
 
 import json
@@ -76,7 +72,7 @@ class TestSybilBoundary(unittest.TestCase):
 
 
 class TestFullCorpusClosedLoopSybil(unittest.TestCase):
-    """The Chapter 4 base-kinematic first cut MUST be the full corpus, not the more
+    """The base-kinematic first cut MUST be the full corpus, not the more
     favourable 1.8M subsample (Data Replay Sybil ~19%/28%)."""
 
     def setUp(self):
@@ -101,10 +97,10 @@ class TestScopingNegative(unittest.TestCase):
             self.skipTest("placement_bootstrap.json not present")
 
     def test_physics_in_loss_refuted(self):
-        self.assertIn("refuted", self.d["verdict_H1a"].lower())
-        self.assertIn("refuted", self.d["verdict_H1b"].lower())
-        # H1a effect is below the pre-registered minimum detectable effect
-        self.assertLess(self.d["H1a_iii_vs_i"]["mean"], self.d["MDE"])
+        self.assertIn("refuted", self.d["verdict_loss_vs_data"].lower())
+        self.assertIn("refuted", self.d["verdict_loss_vs_feature"].lower())
+        # the loss-vs-data effect is below the minimum detectable effect
+        self.assertLess(self.d["loss_vs_data"]["mean"], self.d["MDE"])
 
 
 if __name__ == "__main__":

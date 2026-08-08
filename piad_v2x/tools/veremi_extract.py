@@ -26,7 +26,7 @@ group-splitting (all messages from one vehicle stay in one fold).
 Physics residuals are computed per (receiver, senderPseudo) sequence from the
 constant-velocity / constant-acceleration motion model. They are emitted as
 columns so the ablation can (ii) feed them as features and (iii) use them as the
-in-loss physics target, while (i) the data-only arm ignores them.
+in-loss physics target, while (i) the data-only variant ignores them.
 """
 import argparse
 import io

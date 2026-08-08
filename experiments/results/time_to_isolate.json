@@ -1,5 +1,5 @@
 {
-  "protocol": "PRE_REGISTRATION_H1.md amendment 1; second outcome metric",
+  "protocol": "closed-loop isolation outcomes; second outcome metric",
   "window": "_0709 (held-out; detector frozen on _1416, all senders unseen) [G1]",
   "operating_point": {
     "TAU_REV": 0.15,

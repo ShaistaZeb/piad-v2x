@@ -1,6 +1,6 @@
 {
-  "arm_i_data_only": {
-    "arm": "arm_i_data_only",
+  "variant_i_data_only": {
+    "variant": "variant_i_data_only",
     "roc_auc": 0.9411,
     "pr_auc": 0.9461,
     "f1": 0.8248,
@@ -64,8 +64,8 @@
     },
     "n_params": 10241
   },
-  "arm_ii_residual_feature": {
-    "arm": "arm_ii_residual_feature",
+  "variant_ii_residual_feature": {
+    "variant": "variant_ii_residual_feature",
     "roc_auc": 0.9429,
     "pr_auc": 0.9471,
     "f1": 0.8348,
@@ -129,8 +129,8 @@
     },
     "n_params": 10881
   },
-  "arm_iii_residual_in_loss": {
-    "arm": "arm_iii_residual_in_loss",
+  "variant_iii_residual_in_loss": {
+    "variant": "variant_iii_residual_in_loss",
     "roc_auc": 0.9428,
     "pr_auc": 0.9472,
     "f1": 0.8295,
@@ -196,7 +196,7 @@
     "lambda_star": 1.0
   },
   "rf_baseline": {
-    "arm": "rf_baseline",
+    "variant": "rf_baseline",
     "roc_auc": 0.9384,
     "pr_auc": 0.9477,
     "f1": 0.8443,
@@ -261,7 +261,7 @@
     "fit_seconds": 123.5
   },
   "rule_threshold": {
-    "arm": "rule_threshold",
+    "variant": "rule_threshold",
     "roc_auc": 0.7002,
     "pr_auc": 0.7485,
     "f1": 0.5552,
@@ -324,12 +324,12 @@
       }
     }
   },
-  "compute_H1c": {
-    "arm_iii_ms_per_msg_batch1": 0.14354,
-    "arm_iii_ms_per_msg_batch1024": 0.00015,
+  "compute_cost": {
+    "variant_iii_ms_per_msg_batch1": 0.14354,
+    "variant_iii_ms_per_msg_batch1024": 0.00015,
     "rf_ms_per_msg_batch1": 12.9829,
     "rf_ms_per_msg_batch1024": 0.01226,
-    "arm_iii_model_MB": 0.042,
+    "variant_iii_model_MB": 0.042,
     "rf_model_MB": 243.2,
     "device": "mps"
   }

@@ -5,7 +5,7 @@ the repository root (after `pip install -e .`):
 
     python piad_v2x/tools/run_isolation_outcomes.py --out experiments/results/isolation_outcomes.json
 
-The coupling-OFF (arm C: per-message rejection only) and coupling-ON (arm D: rejection
+The coupling-OFF (variant C: per-message rejection only) and coupling-ON (variant D: rejection
 plus trust-driven neutralisation) accepted-malicious counts come from the tested
 `piad_v2x.lifecycle.closed_loop` logic. This runner adds the three things the
 pre-registration requires and the exploratory closed_loop.json lacked:
@@ -33,8 +33,8 @@ SEED = 42
 
 
 def per_sender_counts(scen_path, rf, sc, test_senders):
-    """Per attacker SENDER: accepted-malicious under coupling-OFF (arm C) and
-    coupling-ON (arm D), plus the benign false-revocation tally. Replicates the
+    """Per attacker SENDER: accepted-malicious under coupling-OFF (variant C) and
+    coupling-ON (variant D), plus the benign false-revocation tally. Replicates the
     acceptance logic in closed_loop.run_scenario, grouped by sender for bootstrapping."""
     df = pd.read_parquet(scen_path)
     df = df[df.attackerType >= 0].copy()
@@ -160,11 +160,11 @@ def main():
         supported = (r["reduction_ci95"] and r["reduction_ci95"][0] > 0
                      and r["reduction_point"] is not None and r["reduction_point"] >= MDE
                      and padj < 0.05)
-        rows[nm]["H1ab_supported"] = bool(supported)
-        rows[nm]["H1c_supported"] = bool(r["false_revocation_ci95"][1] <= FR_BOUND)
+        rows[nm]["reduction_supported"] = bool(supported)
+        rows[nm]["false_revocation_within_bound"] = bool(r["false_revocation_ci95"][1] <= FR_BOUND)
 
     summary = {
-        "protocol": "closed-loop isolation outcomes (pre-registered)",
+        "protocol": "closed-loop isolation outcomes",
         "mde_relative_reduction": MDE, "false_revoke_bound": FR_BOUND, "n_bootstrap": N_BOOT,
         "primary_metric": "accepted malicious messages; reduction = (accC - accD)/accC, "
                           "coupling-OFF (per-message reject) vs coupling-ON (reject + neutralise)",

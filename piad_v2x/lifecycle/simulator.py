@@ -183,7 +183,7 @@ class StreamReport:
     n_rotation_events: int
     duration_seconds: float
     first_hint_time: dict[Hashable, float] = field(default_factory=dict)
-    # D7 physics-violation flag history.
+    # physics-violation flag history.
     # Each entry is (time, drho_dt, phi_t_fired).
     physics_flag_events: list[tuple[float, float, bool]] = field(default_factory=list)
     n_physics_flags: int = 0
@@ -260,7 +260,7 @@ def stream_messages(
         c_self = coupling.cadence(neighbourhood)
         manager.set_rotation_rate(c_self, now=t)
 
-        # D7 / phi_t physics-violation flag: phantom-mass detection from
+        # phi_t physics-violation flag: phantom-mass detection from
         # the density gradient. Fires when ∂ρ/∂t exceeds a plausible-arrival
         # threshold (vehicles appearing without entering the segment).
         phi = bool(neighbourhood.drho_dt > phi_t_threshold)

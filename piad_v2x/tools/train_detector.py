@@ -5,11 +5,11 @@ Detector placement study on real VeReMi Extension features.
 Three matched-capacity neural arms + two baselines, group-split by true sender,
 evaluated exactly as pre-registered:
 
-  Arm i    data-only MLP        (kinematics only, BCE)
-  Arm ii   residual-as-feature  (kinematics + physics residuals, BCE)
-  Arm iii  residual-in-loss PINN(kinematics only inputs; class head + state head;
+  Variant i    data-only MLP        (kinematics only, BCE)
+  Variant ii   residual-as-feature  (kinematics + physics residuals, BCE)
+  Variant iii  residual-in-loss PINN(kinematics only inputs; class head + state head;
                                  loss = BCE + lambda * motion-model residual)
-  RF       Random Forest on Arm-ii features (strong classical baseline; compute cost)
+  RF       Random Forest on Variant-ii features (strong classical baseline; compute cost)
   RuleThr  non-learned residual-threshold detector (pure physics reference)
 
 Outputs: experiments/results/detector_metrics.json (+ per-arm test predictions
@@ -185,7 +185,7 @@ def eval_block(name, df_test, yprob, thr):
     perclass, macro_hard = per_class_f1(df_test, yprob, thr)
     is_prob = float(np.nanmin(yprob)) >= 0.0 and float(np.nanmax(yprob)) <= 1.0
     return {
-        "arm": name,
+        "variant": name,
         "roc_auc": round(float(roc_auc_score(y, yprob)), 4),
         "pr_auc": round(float(average_precision_score(y, yprob)), 4),
         "f1": round(float(f1_score(y, yhat, zero_division=0)), 4),
@@ -242,30 +242,30 @@ def main():
 
     results = {}
 
-    # ---- Arm i: data-only ----
-    print("training Arm i (data-only)...", flush=True)
+    # ---- Variant i: data-only ----
+    print("training Variant i (data-only)...", flush=True)
     m_i = train_torch(Xk["tr"], y["tr"], Xk["va"], y["va"], Xk["tr"].shape[1],
                       pinn=False, epochs=args.epochs)
     p_i_va = predict_torch(m_i, Xk["va"]); thr_i = pick_threshold(y["va"], p_i_va)
     p_i_te = predict_torch(m_i, Xk["te"])
-    results["arm_i_data_only"] = eval_block("arm_i_data_only", te, p_i_te, thr_i)
-    results["arm_i_data_only"]["n_params"] = sum(p.numel() for p in m_i.parameters())
+    results["variant_i_data_only"] = eval_block("variant_i_data_only", te, p_i_te, thr_i)
+    results["variant_i_data_only"]["n_params"] = sum(p.numel() for p in m_i.parameters())
 
-    # ---- Arm ii: residual-as-feature ----
-    print("training Arm ii (residual-as-feature)...", flush=True)
+    # ---- Variant ii: residual-as-feature ----
+    print("training Variant ii (residual-as-feature)...", flush=True)
     m_ii = train_torch(Xa["tr"], y["tr"], Xa["va"], y["va"], Xa["tr"].shape[1],
                        pinn=False, epochs=args.epochs)
     p_ii_va = predict_torch(m_ii, Xa["va"]); thr_ii = pick_threshold(y["va"], p_ii_va)
     p_ii_te = predict_torch(m_ii, Xa["te"])
-    results["arm_ii_residual_feature"] = eval_block("arm_ii_residual_feature", te, p_ii_te, thr_ii)
-    results["arm_ii_residual_feature"]["n_params"] = sum(p.numel() for p in m_ii.parameters())
+    results["variant_ii_residual_feature"] = eval_block("variant_ii_residual_feature", te, p_ii_te, thr_ii)
+    results["variant_ii_residual_feature"]["n_params"] = sum(p.numel() for p in m_ii.parameters())
 
-    # ---- Arm iii: residual-in-loss PINN (lambda selected on val) ----
+    # ---- Variant iii: residual-in-loss PINN (lambda selected on val) ----
     # standardization stats for the physics target (px,py,sx,sy = KINEMATIC[0:4])
     phys_mu = sc_kin.mean_[0:4]; phys_sd = sc_kin.scale_[0:4]
     best = None
     for lam in (0.01, 0.1, 1.0):
-        print(f"training Arm iii PINN lambda={lam}...", flush=True)
+        print(f"training Variant iii PINN lambda={lam}...", flush=True)
         m = train_torch(Xk["tr"], y["tr"], Xk["va"], y["va"], Xk["tr"].shape[1],
                         pinn=True, lam=lam, phys_ctx_tr=P["tr"], phys_ctx_va=P["va"],
                         phys_mu=phys_mu, phys_sd=phys_sd, epochs=args.epochs)
@@ -276,11 +276,11 @@ def main():
     _, lam_star, m_iii = best
     p_iii_va = predict_torch(m_iii, Xk["va"]); thr_iii = pick_threshold(y["va"], p_iii_va)
     p_iii_te = predict_torch(m_iii, Xk["te"])
-    results["arm_iii_residual_in_loss"] = eval_block("arm_iii_residual_in_loss", te, p_iii_te, thr_iii)
-    results["arm_iii_residual_in_loss"]["n_params"] = sum(p.numel() for p in m_iii.parameters())
-    results["arm_iii_residual_in_loss"]["lambda_star"] = lam_star
+    results["variant_iii_residual_in_loss"] = eval_block("variant_iii_residual_in_loss", te, p_iii_te, thr_iii)
+    results["variant_iii_residual_in_loss"]["n_params"] = sum(p.numel() for p in m_iii.parameters())
+    results["variant_iii_residual_in_loss"]["lambda_star"] = lam_star
 
-    # ---- RF baseline (on Arm-ii features) ----
+    # ---- RF baseline (on Variant-ii features) ----
     # RF trains on a stratified subsample to bound memory on 16 GB (neural arms
     # use all data). A documented deviation for memory bounds.
     print("training RF baseline...", flush=True)
@@ -327,12 +327,12 @@ def main():
     import pickle
     rf_mem_mb = len(pickle.dumps(rf)) / 1e6
     pinn_mem_mb = sum(p.numel()*4 for p in m_iii.parameters()) / 1e6
-    results["compute_H1c"] = {
-        "arm_iii_ms_per_msg_batch1": round(lat_iii_1, 5),
-        "arm_iii_ms_per_msg_batch1024": round(lat_iii_1024, 5),
+    results["compute_cost"] = {
+        "variant_iii_ms_per_msg_batch1": round(lat_iii_1, 5),
+        "variant_iii_ms_per_msg_batch1024": round(lat_iii_1024, 5),
         "rf_ms_per_msg_batch1": round(lat_rf_1, 5),
         "rf_ms_per_msg_batch1024": round(lat_rf_1024, 5),
-        "arm_iii_model_MB": round(pinn_mem_mb, 3),
+        "variant_iii_model_MB": round(pinn_mem_mb, 3),
         "rf_model_MB": round(rf_mem_mb, 1),
         "device": DEV}
 
@@ -348,22 +348,22 @@ def main():
                 os.path.join(mdir, "scalers.joblib"))
     torch.save({"state_dict": {k: v.cpu() for k, v in m_iii.state_dict().items()},
                 "n_in": Xk["tr"].shape[1], "lambda_star": lam_star},
-               os.path.join(mdir, "arm_iii.pt"))
+               os.path.join(mdir, "variant_iii.pt"))
 
     # also persist test predictions for the cluster bootstrap
     np.savez(os.path.join(OUT_DIR, "test_preds.npz"),
              y=y["te"], gid=te["gid"].values, attack_class=te["attack_class"].values,
-             arm_i=p_i_te, arm_ii=p_ii_te, arm_iii=p_iii_te, rf=p_rf_te, rule=res_score_te,
+             variant_i=p_i_te, variant_ii=p_ii_te, variant_iii=p_iii_te, rf=p_rf_te, rule=res_score_te,
              thr_i=thr_i, thr_ii=thr_ii, thr_iii=thr_iii, thr_rf=thr_rf, thr_rule=thr_rule)
 
     print("\n=== SUMMARY (test) ===")
-    for k in ("arm_i_data_only","arm_ii_residual_feature","arm_iii_residual_in_loss",
+    for k in ("variant_i_data_only","variant_ii_residual_feature","variant_iii_residual_in_loss",
               "rf_baseline","rule_threshold"):
         r = results[k]
         print(f"{k:28s} PR-AUC={r['pr_auc']:.3f} ROC={r['roc_auc']:.3f} "
               f"F1={r['f1']:.3f} macroF1_hard={r['macro_f1_hard']} FPR={r['fpr']:.3f}")
-    print("lambda*:", results["arm_iii_residual_in_loss"].get("lambda_star"))
-    print("compute:", results["compute_H1c"])
+    print("lambda*:", results["variant_iii_residual_in_loss"].get("lambda_star"))
+    print("compute:", results["compute_cost"])
     print("wrote", os.path.join(OUT_DIR, "detector_metrics.json"))
 
 

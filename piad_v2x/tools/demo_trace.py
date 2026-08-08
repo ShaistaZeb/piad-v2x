@@ -164,8 +164,8 @@ def main():
     else:
         print("  NOT neutralised within its lifetime (short-lived Sybil / benign-until-stop boundary)")
     print("  malicious messages this attacker got ACCEPTED into the safety picture:")
-    print(f"     per-message detection only (arm C): {acc_C}")
-    print(f"     full trust-gated coupling  (arm D): {acc_D}   <- revoking the identity stops the rest")
+    print(f"     per-message detection only (variant C): {acc_C}")
+    print(f"     full trust-gated coupling  (variant D): {acc_D}   <- revoking the identity stops the rest")
     print()
 
 

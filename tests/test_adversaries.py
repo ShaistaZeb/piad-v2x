@@ -1,4 +1,4 @@
-"""Tests for the W6 adversary generators + simulator's D7 / phi_t hook."""
+"""Tests for the adversary generators + the simulator's phi_t hook."""
 from __future__ import annotations
 
 import unittest
@@ -93,7 +93,7 @@ class PhysicsFlagHook(unittest.TestCase):
 
 
 class StaggeredAndStagedAdversaries(unittest.TestCase):
-    """CL-3 (staggered) and CL-6 (staged-retirement) adversaries."""
+    """Staggered and staged-retirement Sybil adversaries."""
 
     def test_staggered_rotation_dos_arrival_count(self) -> None:
         rows = staggered_rotation_dos(

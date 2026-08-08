@@ -1,4 +1,4 @@
-"""Tests for W7 coupling comparators + the F1 frame-event stream."""
+"""Tests for the coupling comparators + the frame-event stream."""
 from __future__ import annotations
 
 import unittest
@@ -14,8 +14,8 @@ from piad_v2x.models.comparators import (
     ChurnHintConfig,
     ContextOnlyCoupling,
     DensityHintConfig,
-    FullDD007ChurnHint,
-    FullDD007DensityHint,
+    ChurnHintCoupling,
+    DensityHintCoupling,
     NaiveThresholdConfig,
     NaiveThresholdRevocation,
     NoCoupling,
@@ -82,10 +82,10 @@ class NoCouplingFloor(unittest.TestCase):
 
 class Registry(unittest.TestCase):
     def test_baseline_four_variants_present(self) -> None:
-        # The four pre-CL-2 baseline variants must remain present and
-        # unchanged. CL-2 adds 'full_dd007_churn' but does not remove any.
+        # The four baseline variants must remain present and unchanged;
+        # adding a variant must not remove any.
         self.assertTrue({
-            "no_coupling", "context_only", "trust_only", "full_dd007",
+            "no_coupling", "context_only", "trust_only", "full_coupling",
         }.issubset(set(COUPLING_VARIANTS.keys())))
 
     def test_all_variants_have_cadence_and_revocation_hint(self) -> None:
@@ -170,7 +170,7 @@ class FullStackWithComparator(unittest.TestCase):
 
 
 class ChurnHintVariant(unittest.TestCase):
-    """CL-2: trust-independent churn-driven hint path."""
+    """Trust-independent churn-driven hint path."""
 
     def _cold_peer(self) -> PeerState:
         # Fresh peer, high trust, no consecutive-low count - would NOT
@@ -181,21 +181,21 @@ class ChurnHintVariant(unittest.TestCase):
         return PeerState(msg_count=200, T_peer=0.99, count_below=0)
 
     def test_churn_hint_fires_for_cold_peer_in_high_churn(self) -> None:
-        c = FullDD007ChurnHint()
+        c = ChurnHintCoupling()
         nbh = NeighbourhoodSummary(
             mean=0.95, q25=0.90, n=20, rho_t=20.0, kappa_t=10.0
         )
         self.assertGreater(c.churn_hint(self._cold_peer(), nbh), 0.0)
 
     def test_churn_hint_silent_for_settled_peer(self) -> None:
-        c = FullDD007ChurnHint()
+        c = ChurnHintCoupling()
         nbh = NeighbourhoodSummary(
             mean=0.95, q25=0.90, n=20, rho_t=20.0, kappa_t=10.0
         )
         self.assertEqual(c.churn_hint(self._settled_peer(), nbh), 0.0)
 
     def test_churn_hint_silent_below_kappa_threshold(self) -> None:
-        c = FullDD007ChurnHint(
+        c = ChurnHintCoupling(
             churn_config=ChurnHintConfig(kappa_threshold=3.0)
         )
         nbh = NeighbourhoodSummary(
@@ -204,19 +204,19 @@ class ChurnHintVariant(unittest.TestCase):
         self.assertEqual(c.churn_hint(self._cold_peer(), nbh), 0.0)
 
     def test_churn_hint_independent_of_trust(self) -> None:
-        """A-PHY-1 case: per-peer trust looks benign, but churn still fires."""
-        c = FullDD007ChurnHint()
+        """Kinematic-respecting case: per-peer trust looks benign, but churn still fires."""
+        c = ChurnHintCoupling()
         nbh = NeighbourhoodSummary(
             mean=1.0, q25=1.0, n=20, rho_t=20.0, kappa_t=10.0
         )
         benign_looking = PeerState(msg_count=5, T_peer=1.0, count_below=0)
         self.assertGreater(c.churn_hint(benign_looking, nbh), 0.0)
 
-    def test_cadence_unchanged_from_full_dd007(self) -> None:
+    def test_cadence_unchanged_from_full_coupling(self) -> None:
         """The new variant inherits cadence(); regression check."""
         from piad_v2x.lifecycle.coupling import CouplingLayer
         base = CouplingLayer()
-        ext = FullDD007ChurnHint()
+        ext = ChurnHintCoupling()
         for kappa in (0.0, 1.0, 5.0, 50.0):
             nbh = NeighbourhoodSummary(
                 mean=0.4, q25=0.3, n=10, rho_t=15.0, kappa_t=kappa
@@ -224,12 +224,12 @@ class ChurnHintVariant(unittest.TestCase):
             self.assertAlmostEqual(base.cadence(nbh), ext.cadence(nbh))
 
     def test_registered_in_coupling_variants(self) -> None:
-        self.assertIn("full_dd007_churn", COUPLING_VARIANTS)
-        self.assertIs(COUPLING_VARIANTS["full_dd007_churn"], FullDD007ChurnHint)
+        self.assertIn("full_churn_hint", COUPLING_VARIANTS)
+        self.assertIs(COUPLING_VARIANTS["full_churn_hint"], ChurnHintCoupling)
 
 
 class DensityHintVariant(unittest.TestCase):
-    """CL-4: trust-independent cumulative-density hint path."""
+    """Trust-independent cumulative-density hint path."""
 
     def _nbh(self) -> NeighbourhoodSummary:
         return NeighbourhoodSummary(
@@ -240,7 +240,7 @@ class DensityHintVariant(unittest.TestCase):
         return PeerState(msg_count=msg_count, T_peer=1.0, count_below=0)
 
     def test_silent_below_unique_threshold(self) -> None:
-        c = FullDD007DensityHint(
+        c = DensityHintCoupling(
             density_config=DensityHintConfig(unique_threshold=8)
         )
         for i in range(5):  # 5 unique peers seen
@@ -250,7 +250,7 @@ class DensityHintVariant(unittest.TestCase):
         self.assertEqual(h, 0.0)
 
     def test_fires_above_unique_threshold_for_recent_peer(self) -> None:
-        c = FullDD007DensityHint(
+        c = DensityHintCoupling(
             density_config=DensityHintConfig(
                 unique_threshold=5, recent_window_s=10.0
             )
@@ -264,7 +264,7 @@ class DensityHintVariant(unittest.TestCase):
         self.assertGreater(h, 0.0)
 
     def test_silent_for_settled_peer_outside_recent_window(self) -> None:
-        c = FullDD007DensityHint(
+        c = DensityHintCoupling(
             density_config=DensityHintConfig(
                 unique_threshold=3, recent_window_s=5.0
             )
@@ -280,9 +280,9 @@ class DensityHintVariant(unittest.TestCase):
         self.assertEqual(h, 0.0)
 
     def test_independent_of_trust_and_kappa(self) -> None:
-        """A-PHY-1 + slow stagger case: trust=1.0, kappa_t low, but density
+        """Kinematic-respecting + slow-stagger case: trust=1.0, kappa_t low, but density
         signal still fires."""
-        c = FullDD007DensityHint(
+        c = DensityHintCoupling(
             density_config=DensityHintConfig(unique_threshold=3)
         )
         nbh_low_kappa = NeighbourhoodSummary(
@@ -298,8 +298,8 @@ class DensityHintVariant(unittest.TestCase):
         self.assertGreater(h, 0.0)
 
     def test_cadence_and_churn_unchanged_from_parent(self) -> None:
-        base = FullDD007ChurnHint()
-        ext = FullDD007DensityHint()
+        base = ChurnHintCoupling()
+        ext = DensityHintCoupling()
         for kappa in (0.0, 1.0, 5.0):
             nbh = NeighbourhoodSummary(
                 mean=0.4, q25=0.3, n=10, rho_t=15.0, kappa_t=kappa
@@ -311,14 +311,14 @@ class DensityHintVariant(unittest.TestCase):
             )
 
     def test_registered_in_coupling_variants(self) -> None:
-        self.assertIn("full_dd007_density", COUPLING_VARIANTS)
+        self.assertIn("full_density_hint", COUPLING_VARIANTS)
         self.assertIs(
-            COUPLING_VARIANTS["full_dd007_density"], FullDD007DensityHint
+            COUPLING_VARIANTS["full_density_hint"], DensityHintCoupling
         )
 
 
 class NaiveThresholdRevocationVariant(unittest.TestCase):
-    """Phase 1 detection-only baseline: instant trust-threshold revocation."""
+    """Detection-only baseline: instant trust-threshold revocation."""
 
     def test_fires_below_threshold(self) -> None:
         c = NaiveThresholdRevocation(
@@ -335,7 +335,7 @@ class NaiveThresholdRevocationVariant(unittest.TestCase):
         self.assertEqual(c.revocation_hint(high_peer), 0.0)
 
     def test_no_cold_start_gate(self) -> None:
-        """Fires even on msg_count=1, unlike trust_only / full_dd007."""
+        """Fires even on msg_count=1, unlike trust_only / full_coupling."""
         c = NaiveThresholdRevocation()
         fresh_peer = PeerState(msg_count=1, T_peer=0.1, count_below=0)
         self.assertGreater(c.revocation_hint(fresh_peer), 0.0)

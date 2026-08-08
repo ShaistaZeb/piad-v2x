@@ -1,4 +1,4 @@
-# Dataset Card - VeReMi Extension features (PIAD-V2X, relational phase)
+# Dataset Card - VeReMi Extension features (PIAD-V2X)
 
 Real raw VeReMi Extension (CC-BY 4.0), low-density `_1416` windows, features from `piad_v2x/tools/veremi_extract.py`. Rows = received BSMs after dropping unresolved senders (attackerType = -1).
 
@@ -17,4 +17,4 @@ Real raw VeReMi Extension (CC-BY 4.0), low-density `_1416` windows, features fro
 
 **Totals:** 8,110,661 messages across 16,880 sender-instances in 10 scenarios.
 
-Sender-instances are the group unit for the leakage-safe split (60/20/20). The effective N for sender-clustered inference is the sender count, not the message count (see PRE_REGISTRATION Section 9).
+Sender-instances are the group unit for the leakage-safe split (60/20/20). The effective N for sender-clustered inference is the sender count, not the message count.

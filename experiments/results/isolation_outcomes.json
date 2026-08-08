@@ -1,5 +1,5 @@
 {
-  "protocol": "experiments/PRE_REGISTRATION_H1.md",
+  "protocol": "closed-loop isolation outcomes",
   "mde_relative_reduction": 0.2,
   "false_revoke_bound": 0.02,
   "n_bootstrap": 1000,
@@ -21,8 +21,8 @@
       "n_attacker_senders": 102,
       "n_benign_senders": 237,
       "p_holm": 0.124,
-      "H1ab_supported": false,
-      "H1c_supported": false
+      "reduction_supported": false,
+      "false_revocation_within_bound": false
     },
     "RandomPos_1416": {
       "regime": "persistent",
@@ -40,8 +40,8 @@
       "n_attacker_senders": 102,
       "n_benign_senders": 237,
       "p_holm": 0.004,
-      "H1ab_supported": true,
-      "H1c_supported": false
+      "reduction_supported": true,
+      "false_revocation_within_bound": false
     },
     "DataReplay_1416": {
       "regime": "persistent",
@@ -59,8 +59,8 @@
       "n_attacker_senders": 102,
       "n_benign_senders": 237,
       "p_holm": 0.0,
-      "H1ab_supported": true,
-      "H1c_supported": false
+      "reduction_supported": true,
+      "false_revocation_within_bound": false
     },
     "Disruptive_1416": {
       "regime": "persistent",
@@ -78,8 +78,8 @@
       "n_attacker_senders": 102,
       "n_benign_senders": 237,
       "p_holm": 0.0,
-      "H1ab_supported": true,
-      "H1c_supported": false
+      "reduction_supported": true,
+      "false_revocation_within_bound": false
     },
     "DelayedMessages_1416": {
       "regime": "persistent",
@@ -97,8 +97,8 @@
       "n_attacker_senders": 102,
       "n_benign_senders": 237,
       "p_holm": 0.0,
-      "H1ab_supported": true,
-      "H1c_supported": false
+      "reduction_supported": true,
+      "false_revocation_within_bound": false
     },
     "DoS_1416": {
       "regime": "persistent",
@@ -116,8 +116,8 @@
       "n_attacker_senders": 102,
       "n_benign_senders": 237,
       "p_holm": 0.0,
-      "H1ab_supported": true,
-      "H1c_supported": false
+      "reduction_supported": true,
+      "false_revocation_within_bound": false
     },
     "DataReplaySybil_1416": {
       "regime": "sybil",

@@ -1,4 +1,4 @@
-"""Tests for trust aggregator (components.md C3, DD-007 dissertation form)."""
+"""Tests for the trust aggregator."""
 import unittest
 
 from piad_v2x.lifecycle.aggregator import AggregatorConfig, TrustAggregator
@@ -82,7 +82,7 @@ class NeighbourhoodSummary(unittest.TestCase):
 
 
 class PhysicsInformedNeighbourhood(unittest.TestCase):
-    """DD-007: aggregator must expose ρ_t, ∂ρ/∂t, κ_t to the coupling layer."""
+    """The aggregator must expose ρ_t, ∂ρ/∂t, κ_t to the coupling layer."""
 
     def test_rho_t_equals_active_count_with_unit_coverage(self) -> None:
         """With coverage_area=1.0, ρ_t equals the active peer count."""
@@ -205,9 +205,9 @@ class IntegrationWithCoupling(unittest.TestCase):
         self.assertGreaterEqual(n.mean, 0.7)
         self.assertAlmostEqual(layer.cadence(n), layer.cfg.C_base)
 
-    def test_dd007_hostile_dense_lowchurn_accelerates_more_than_sparse(self) -> None:
+    def test_hostile_dense_lowchurn_accelerates_more_than_sparse(self) -> None:
         """Same low neighbourhood trust, but stable-dense env should drive higher cadence
-        than stable-sparse, due to g_density amplification (DD-007).
+        than stable-sparse, due to g_density amplification.
 
         Both scenarios are aged past w_t so g_churn is neutral; only g_density differs.
         """
