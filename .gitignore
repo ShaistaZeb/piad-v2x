@@ -24,7 +24,7 @@ experiments/results/models/
 .DS_Store
 .ipynb_checkpoints/
 
-# --- publication hygiene (added 2026-07-22) ---
+# --- hygiene ---
 *.log
 *.npz
 *STATUS*.txt
