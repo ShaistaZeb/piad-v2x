@@ -14,7 +14,7 @@ Outputs (experiments/results/):
   fig_km_multiscale.png         fig_km_multiscale.pdf
   lifecycle_multiscale_figuredata.json   (the plotted numbers, for provenance)
 
-Run from the piad-v2x repo root with the version2 venv python.
+Run from the piad-v2x repo root with the project venv.
 """
 import glob, json, os
 from collections import defaultdict

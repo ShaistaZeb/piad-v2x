@@ -9,7 +9,7 @@ Architecture: scikit-learn RandomForestClassifier on the kinematic
 features, with class-weighted training to handle the 45:1 worst-case
 imbalance in VeReMi Extension. Multi-class (20-way) by default.
 
-This is not the headline novelty. It is the floor.
+This is the baseline floor, not the main model.
 """
 from __future__ import annotations
 

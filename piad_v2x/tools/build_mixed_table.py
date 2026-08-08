@@ -27,7 +27,7 @@ Two correctness points baked in:
 import argparse, glob, os
 import pandas as pd
 
-# extractor column -> loss-based loader column (piad_v2x/dataset.py SIM_COLS)
+# extractor column -> loss-based loader column
 RENAME = {
     "px": "posx", "py": "posy",
     "sx": "spdx", "sy": "spdy",
